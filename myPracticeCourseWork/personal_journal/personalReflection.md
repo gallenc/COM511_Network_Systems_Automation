@@ -1,4 +1,4 @@
-[Personal Learning Record](../personal_journal/personal_journal.md) | [Personal Reflection](../personal_journal/personalReflection.md) 
+[Personal Journal](../personal_journal) | [Personal Reflection](../personal_journal/personalReflection.md) 
 
 # personal reflection
 
