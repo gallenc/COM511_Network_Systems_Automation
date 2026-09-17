@@ -1,4 +1,4 @@
-[Personal Learning Record](../../personal_learning_record/personal_learning_record.md) | [Session Notes](../sessions/README.md) 
+[Personal Learning Record](../../personal_journal/personal_journal.md) | [Session Notes](../sessions/README.md) 
 
 # Session 6
 
