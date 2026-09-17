@@ -1,0 +1,27 @@
+# using fixed ip addresses so that config works with known addresses
+# to see all network use docker network ls
+# to see config use docker network inspect kuwabia-docker-compose_kuwaiba-net
+# note gateway is 172.20.0.1 
+networks:
+  N000:
+    ipam:
+      config:
+        - subnet: 172.40.0.0/24
+
+
+services:
+        
+  dns1:
+    image: solent1/mydns1
+    build: ./container-fs/mydns1/
+    container_name: dns1
+    hostname: dns1
+
+#    volumes:
+      # - ./container-fs/mydns1/etc/bind/named.conf.local:/etc/bind/named.conf.local
+
+    ports:
+      - "11153:53/udp"
+    networks:
+      N000:
+        ipv4_address: 172.40.0.101
