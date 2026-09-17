@@ -1,4 +1,4 @@
-[Personal Learning Record](../personal_journal/personal_journal.md) | [Prior Experience](../personal_journal/priorExperience.md) 
+[Personal Journal](../personal_journal) | [Prior Experience](../personal_journal/priorExperience.md) 
 
 # Prior Experience
 
