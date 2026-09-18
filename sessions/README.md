@@ -113,7 +113,7 @@
             <li>docker desktop examples</li>
          </td>
          <td>
-            cCraig not here Monday 2nd
+            Craig not here Monday 2nd
          </td>
       </tr>
       <tr>
