@@ -29,6 +29,7 @@ Wednesday Group
 
 |github user       | full name                 | student id    | Github URL                                                                                                                  | progress                        |
 |:-----------------|:--------------------------|:--------------|:----------------------------------------------------------------------------------------------------------------------------|:--------------------------------|
+| gallenc          | Craig Gallen              | (Tutor)       | https://github.com/gallenc/COM511_Network_Systems_Automation/tree/main/myPracticeCourseWork/personal_journal                |                                 | 
 |                  |Bittles, Rob               |102534326      |                                                                                                                             |                                 |
 |                  |Dawkins, Liam              |103127501      |                                                                                                                             |                                 |
 |                  |Dsilva, Levika             |103034209      |                                                                                                                             |                                 |
