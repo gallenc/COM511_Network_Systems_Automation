@@ -33,11 +33,19 @@ These include:
 | Orchestration | Ansible, Puppet, Chef, Salt, Kubernetes |
 | Programmable compute models and APIs | Virtualisation: Virtual Machines, Containers (Docker)<BR>Static configuration: Package Management, PXE Boot, Logical and Physical Inventory, Wiring schemes etc.<BR> Dynamic Configuration: DHCP, DNS, SDN OpenFlow, Cloud Stacks |
 
+## Git for Infrastructure as Code
+Git is now widely used as the backbone `source of truth` for managing infrastructure as code.
+In this class we will be using git extensively, so the first thing we need to consolidate is a basic understanding of how Git works
 
-## infrastructure as code approach
+---
+**Exercise 1.1**
 
-## Git
-git - ssh based access - personal access tokens
+Follow the notes at the top of this repository in order to
+* create a personal fork of this repo
+* begin writing notes and recording your work in your own fork for later use
+
+---
+
 
 ## Operating Systems
 
