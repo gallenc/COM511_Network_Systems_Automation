@@ -5,11 +5,11 @@
 ## Introduction to Network Systems Automation
 
 There used to be a significant divide between `Network Administrators`, `Systems Administrators` and `Programmers` but this distinction between the disciplines is rapidly disappearing as DEVOPS and DEVSECOPS are becoming normalised practices in large organisations.
-THe networking and telecoms industry are rapidly pushing for convergence between networking and compute through organisations like the [CNCF Telecoms Infrastructure Program](https://www.telecominfraproject.com/) 
+The networking and telecoms industry are rapidly pushing for convergence between networking and compute through organisations like the [CNCF Telecoms Infrastructure Program](https://www.telecominfraproject.com/) 
  
 So what do we need to do to manage a large fleet of servers and switches?
 
-![alt text](../docs/images/CERN_Server_03.jpg "CERN_Server_03.jpg")
+![alt text](./docs/images/CERN_Server_03.jpg "CERN_Server_03.jpg")
 (CERN Server Room https://commons.wikimedia.org/wiki/File:CERN_Server_03.jpg)
 
 Consistent Process: 
