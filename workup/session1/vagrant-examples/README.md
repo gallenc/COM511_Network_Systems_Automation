@@ -1,6 +1,5 @@
-# Vagrant Examples
 
-## Installing Vagrant and VirtualBox
+## Installing Vagrant
 
 Vagrant is an open-source tool by HashiCorp that simplifies creating and managing portable, reproducible development environments using virtual machines (VMs). 
 It is very similar in function to `docker compose`
@@ -24,37 +23,6 @@ setx VAGRANT_HOME C:\devel\vagrant\vagranthome
 ```
 (setx a command-line tool to permanently create or modify user or system environment variables, writing them to the registry for future command prompt sessions)
 
-You can download VirtualBox from [VirtualBox Downloads](https://www.virtualbox.org/wiki/Downloads)
-
-Other virtual box installers and iso files are here (i amusing version 7.2.4) https://download.virtualbox.org/virtualbox/https://download.virtualbox.org/virtualbox/7.2.4/
-
-Wen you install VirtualBox, I recommend that you also need to set the preferences to place the virtual machines in a location which is not on a network drive.
-
-![alt text](../vagrant-examples/images/virtaulBoxPreferences.png "Figure virtaulBoxPreferences.png")
-
-# Building a VirtualBox machine from an .iso file
-
-It is perfectly possible to build virtual box machines from a downloaded DVD iso file using the VirtualBox gui.
-You may already have done this. 
-Lots of tutorials are available on line and the [VirtualBox documentation](https://www.virtualbox.org/wiki/Documentation) is quite useful
-
-Here is a tutorial for installing Rocky Linux on VirtualBox manually from an iso
-[Guide to Rocky on VirtualBox](https://docs.rockylinux.org/10/guides/virtualization/vbox-rocky/)
-The basis steps will be the same for RHEL, Centos, Alma linux.
-
-The isos for various releases are available on line and can be downloaded directly or faster by using `bittorrent` if it is not blocked on your network.
-
-Alma Liux:
-
-[https://almalinux.org/get-almalinux/](https://almalinux.org/get-almalinux/)
-
-[https://repo.almalinux.org/almalinux/10/isos/x86_64/](https://repo.almalinux.org/almalinux/10/isos/x86_64/)
-
-Rocky Linux:
-
-[https://rockylinux.org/download](https://rockylinux.org/download)
-
-[https://download.rockylinux.org/pub/rocky/10/isos/x86_64/](https://download.rockylinux.org/pub/rocky/10/isos/x86_64/)
 
 # Building your first vagrant machine
 
