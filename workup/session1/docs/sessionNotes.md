@@ -22,6 +22,8 @@ Start by revising [Operating Systems Structure](./operating-systems-structure.md
 
 ## Virtualisation
 
+![alt text](./images/HypervisorTypes.png "Figure HypervisorTypes.png")
+
 Virtualisation - type 1 / 2 hypervisor
 VirtualBox
 Vagrant
