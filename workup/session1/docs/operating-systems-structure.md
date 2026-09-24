@@ -1,4 +1,4 @@
-[Main Menu](../../README.md) | [session7](../../session7/) | [Operating System Structure](../docs/operating-systems-structure.md)
+[Main Menu](../../README.md) | [session1](../../session1/) | [Operating System Structure](../docs/operating-systems-structure.md)
 
 # The origins of the Linux Operating System
 
@@ -177,7 +177,7 @@ Also have a look at the [Bourne Shell Tutorial](https://www.shellscript.sh)
 ## Package Management
 
 Package management is a key function of operating systems which allows users to install and remove programs which can run using the operating systems services.
-The following exercise explains package managment and takes you through installing the Apache 2 web server on your Raspberry PI.
+The following exercise explains package management and takes you through installing the Apache 2 web server on a linux machine.
 
 Exercise  [Installing Apache Web Server](../docs/package-management-apache.md)
 

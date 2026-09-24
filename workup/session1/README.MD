@@ -11,10 +11,6 @@ So what do we need to do to manage a large fleet of servers and switches?
 
 <img src="./docs/images/CERN_Server_03.jpg" alt="CERN_Server_03.jpg" width="50%"/>
 
-
-
-
-![alt text](./docs/images/CERN_Server_03.jpg "CERN_Server_03.jpg")
 (CERN Server Room https://commons.wikimedia.org/wiki/File:CERN_Server_03.jpg)
 
 Consistent Process: 
@@ -28,7 +24,8 @@ Version Control:
 
 Increasingly, software development techniques for version controlling and collaboratively working on code are being applied to systems and network  administration tasks and this is collectively referred to managing `Infrastructure as Code`.
 
-Network systems Automation covers both the standards used to ensure the network is programmable and the systems used to automate the provisioning of the network. These include:
+Network systems Automation covers both the standards used to ensure the network is programmable and the systems used to automate the provisioning of the network. 
+These include:
 
 | systems                                   | examples |
 |:------------------------------------------|---------------------------------------------|
