@@ -40,12 +40,12 @@ In this class we will be using git extensively, so the first thing we need to co
 ---
 **Exercise 1.1**
 
-Follow the notes at the top of this repository in order to
+Follow the notes in the usingGit folder the top of this repository in order to
+* create and personalise your gitHub account
 * create a personal fork of this repo
-* begin writing notes and recording your work in your own fork for later use
+* begin writing notes and recording your own work in your own fork for later use in your report
 
 ---
-
 
 ## Operating Systems
 
