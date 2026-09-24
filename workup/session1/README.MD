@@ -33,35 +33,9 @@ These include:
 | Orchestration | Ansible, Puppet, Chef, Salt, Kubernetes |
 | Programmable compute models and APIs | Virtualisation: Virtual Machines, Containers (Docker)<BR>Static configuration: Package Management, PXE Boot, Logical and Physical Inventory, Wiring schemes etc.<BR> Dynamic Configuration: DHCP, DNS, SDN OpenFlow, Cloud Stacks |
 
-## Git for Infrastructure as Code
-Git is now widely used as the backbone `source of truth` for managing infrastructure as code.
-In this class we will be using git extensively, so the first thing we need to consolidate is a basic understanding of how Git works
+All of these topics will be looked at in detail in the following weeks but for now we will lay revise or lay some foundations for the module
 
----
-**Exercise 1.1**
-
-Follow the notes in the usingGit folder the top of this repository in order to
-* create and personalise your gitHub account
-* create a personal fork of this repo
-* begin writing notes and recording your own work in your own fork for later use in your report
-
----
-
-## Operating Systems
-
-## Virtualisation
-
-Virtualisation - type 1 / 2 hypervisor
-VirtualBox
-Vagrant
-
-# Getting Started with Vagrant and Virtual Box
-See [vagrant-examples](../session1/vagrant-examples)
-
-## User Management
-Post deploy script install what we need set up basic access
-SSH based access for users - public private keys
-
+Begin by looking at [Session 1 Notes and Exercises](./docs/sessionNotes.md)
 
 
 
