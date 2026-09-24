@@ -83,7 +83,7 @@ All owners are also in a group
 When you list a directory, you can see the contained files ownership and permissions.
 
 ```
-admin@raspberrypi01:~/devel $ ls -all
+ls -all
 total 84
 drwxr-xr-x  6 admin admin  4096 Oct 22 12:14 .
 drwx------ 22 admin admin  4096 Oct 22 18:23 ..
@@ -114,15 +114,15 @@ The [X window system](https://en.wikipedia.org/wiki/X_Window_System) was release
 
 More recently, the [Wayland](https://wayland.freedesktop.org/) replacement for the X11 window system protocol has been making progress.
 
-Both X and Wayland are options for later Raspberry Pi's
+Both X and Wayland are options for modern Linux distributions
 
 ## Language Systems
 Multiple language systems can be present in a Linux system. 
 
 Often by default, only the `runtime` libraries for a given language are installed.
-These libraries are necessary to run a program written in the language but not to create a new program.
+These libraries are necessary to run a program written in the language but not enough to create a new program.
 
-If you want to create and compile new programs, then the languages development libraries must also be installed and possibly also the Kernel development libraries so that the language can make calls against the kernel.
+If you want to create and compile new programs, then the languages development libraries must also be installed and possibly also the Kernel development libraries so that the language can make calls against the Kernel.
 
 ## Boot System Structure
 
@@ -142,16 +142,11 @@ The `boot loader` loads the key kernel components from the operating system disk
 The reason this is called a boot process is because it is like the computer is in the process of pulling itself up using its own boot straps
  
 A common boot loader used in most Linux distributions is called [GRUB](https://www.gnu.org/software/grub/).
-But this is not used on the Raspberry Pi.
-
-Note that the Raspberry PI is a very small device and does not have a BIOS. 
-It has an unusual bespoke boot process which involves first loading the boot program from the SD Card into the Graphics Processing Uni. 
-If you are interested see [Raspberry PI Boot Process](https://stackoverflow.com/questions/16317623/how-does-raspberry-pis-boot-loader-work)
 
 ## Key Shell Commands
 
 Users can interact with Linux using a terminal session which runs the `bourne shell`
-It is worth taking time to become familiar with some of the key terminal commands:
+It is worth taking time to become familiar with some of the key terminal commands when you spin up your first linux system:
 
 | command | purpose                                                  |
 |:--------|----------------------------------------------------------|
@@ -161,14 +156,17 @@ It is worth taking time to become familiar with some of the key terminal command
 | rm      | removes a file<br>rm -R removes a directory and its contents |
 |  vi     | basic text editor which is on most linux systems   |
 |  nano   | easier to use text editor                                 |
-| cat     | views a file cat file-name |
+| cat     | views the contents of a text file cat file-name |
 |  df -h  | Shows how much disk has been used |
 |  top    | shows top processes and memory allocation on the system |
 |  ps     | shows processes belonging to you<BR> ps -aux shows all processes on the system<br>ps -aux &#124; grep process-name  # finds a particular process by name |
 | sudo    | performs a command with root privileges if you are in the sudoers group  |
 | ping    | checks connectivity to a url or IP address |
-| ifconfig| shows all ethernet interfaces adn IP addresses |
+| ifconfig| shows all ethernet interfaces and IP addresses |
 | route -n | shows the routing table |
+| arp      | shows the current contents of the arp table |
+| ip addr | newer command showing interfaces and IP addresses |
+| ip route | newer command showing the routing table |
 
 Here is a useful [command line for beginners tutorial](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
 
@@ -177,6 +175,18 @@ Also have a look at the [Bourne Shell Tutorial](https://www.shellscript.sh)
 ## Package Management
 
 Package management is a key function of operating systems which allows users to install and remove programs which can run using the operating systems services.
+
+A package is essentially a zip file containing binary code for a given program and metadata which tells the system how the program is to be installed and what dependencies it has on other packages.
+
+In Windows, programs are typically distributed and installed using `.msi` files.
+More recently, a more Linux like distribution system has been introduced called chocolatey (https://chocolatey.org/)
+
+Debian based Linux distributions like Ubuntu use `apk` packages and the `apt` package manager.
+
+RedHat based Linux distributions like RHEL, Centos, Rocky Linux or Alma Linux use `rpm` files.
+
+`rpm` files are usually installed using `yum` or the newer RedHat `dnf` package manager.
+
 The following exercise explains package management and takes you through installing the Apache 2 web server on a linux machine.
 
 Exercise  [Installing Apache Web Server](../docs/package-management-apache.md)
