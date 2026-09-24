@@ -1,0 +1,1 @@
+{"dependencies":[["vagrant-berkshelf",["= 5.1.2"]],["vagrant-omnibus",["= 1.5.0"]]],"checksum":"524843739f63c2e594bdedfebf6a391793ebf6b1a464935a841c44a197b1994a","vagrant_version":"2.4.9"}
