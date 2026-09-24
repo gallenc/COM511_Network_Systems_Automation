@@ -29,7 +29,7 @@ Network systems Automation covers both the standards used to ensure the network 
 |:------------------------------------------|---------------------------------------------|
 | CMDB (Configuration Management Database)   | IP Address Management(IPAM) , Routing Tables, BGP tables management etc  |
 | Orchestration | Ansible, Puppet, Chef, Salt, Kubernetes |
-| Programmable compute models and APIs | Virtual Machines, Docker<BR> Static configuration, PXE Boot, Lognical and Physical inventory, Wiring diagrams etc.<BR> Dynamic Configuration DHCP, DNS, SDN OpenFlow, Cloud Stacks |
+| Programmable compute models and APIs | Virtualisation: Virtual Machines, Containers (Docker)<BR>Static configuration: Package Management, PXE Boot, Logical and Physical Inventory, Wiring schemes etc.<BR> Dynamic Configuration: DHCP, DNS, SDN OpenFlow, Cloud Stacks |
 
 
 ## infrastructure as code approach
