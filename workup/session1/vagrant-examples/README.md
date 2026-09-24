@@ -7,7 +7,7 @@ It is very similar in function to `docker compose`
 
 I am using Vagrant for Windows with VirtualBox
 
-VAgrant can work with other virtualisation platforms including Vmware, docker and KVM. 
+Vagrant can work with other virtualisation platforms including Vmware, docker and KVM. 
 However most of the documentation seems to prefer VirtualBox so this seems the most sensible choice. 
 
 Vagrant can also be installed on Apple MAC and linux computers but I will leave that to your own research.
