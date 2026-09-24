@@ -88,7 +88,7 @@ You cannot write to the `upstream` repository but you can write to this `forked`
   You could make this private and restrict access but we do not need to do this in this class.
   (You will be creating your own notes from this repo - but it will be easy to spot if this is not your own work when marking the submission)
 
----notes
+---
 
 You may want to make your tutor a collaborator on your project as this will allow him to track your progress 
 (In future, if you are working together with another student on the same code, you may also want to make your partner a collaborator).
