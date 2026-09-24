@@ -48,7 +48,7 @@ PLEASE NOTE, while github is very reliable, you should also keep a local backup 
 
 To create a fork of this repository
 1. sign in to your own github account
-2. navigate to this repository https://github.com/gallenc/COM615_Network-Management_1/
+2. navigate to this repository https://github.com/gallenc/COM511_Network_Systems_Automation/
 3. click the FORK icon
 
 ![alt text](../docs/images/ForkingARepo.png "Figure ForkingARepo.png")
@@ -62,33 +62,33 @@ Having forked the repository, go to your own github account and clone the reposi
 Rather than just clone the repository into a workspace on your IDE, it is good practice to create a separate folder on your local machine where you will clone your remote repositories. 
 You can import separate projects from this clone into your IDE workspace as you need to work on them.
 
-Create a git repo folder on your local drive and clone your fork of COM615_Network-Management_1 into it.
+Create a git repo folder on your local drive and clone your fork of COM511_Network_Systems_Automation into it.
 
 DO NOT check out your repository onto a network (e.g. U:) drive or a One Drive location. 
 The time latency in these drives can cause git to fail.
 
-I usually create a git repository close the the root of the C: drive (e.g. C:/devel/gitrepos/COM615_Network-Management_1)
+I usually create a git repository close the the root of the C: drive (e.g. C:/devel/gitrepos/COM511_Network_Systems_Automation)
 
 ```
 mkdir gitrepos
 cd gitrepos
-git clone https://github.com/ {your github id }/COM615_Network-Management_1.git
+git clone https://github.com/ {your github id }/COM511_Network_Systems_Automation.git
 ```
 Important:  if using SSH keys use
 ```
-git clone  git@github.com:{your github id }/COM615_Network-Management_1.git
+git clone  git@github.com:{your github id }/COM511_Network_Systems_Automation.git
 ```
 
 You should now have a clone of your fork in your gitrepos directory
-`gitrepos/COM615_Network-Management_1`
+`gitrepos/COM511_Network_Systems_Automation`
 
 ### hidden files `.git` and `.gitignore`
 You should set the view on your windows file explorer to show hidden files and file extensions. 
 This will allow you to see git and IDE specific files which are otherwise hidden.
 
-In particular, you will see that the top level folder COM615_Network-Management_1 contains a .git folder.
+In particular, you will see that the top level folder COM511_Network_Systems_Automation contains a .git folder.
 This is where git stores all of the branches versions and changes to your repository. 
-The rest of the files under COM615_Network-Management_1 are the currently checked out versions of your code.
+The rest of the files under COM511_Network_Systems_Automation are the currently checked out versions of your code.
 
 You will also notice that many of the projects in this repo have a `.gitignore` file.
 This tells git to ignore certain directories or files when committing changes.
@@ -109,57 +109,57 @@ This will allow merges to go smoothly.
 You can see which remote repositories are referenced in your local repo using
 ```
 $ git remote -v
-origin  https://github.com/{ your github id}/COM615_Network-Management_1.git (fetch)
-origin  https://github.com/{ your github id}/COM615_Network-Management_1.git (push)
+origin  https://github.com/{ your github id}/COM511_Network_Systems_Automation.git (fetch)
+origin  https://github.com/{ your github id}/COM511_Network_Systems_Automation.git (push)
 ```
 if you are using SSH keys this will be
 ```
 $ git remote -v
-origin  git@github.com:{ your github id}/COM615_Network-Management_1.git (fetch)
-origin  git@github.com:{ your github id}/COM615_Network-Management_1.git (push)
+origin  git@github.com:{ your github id}/COM511_Network_Systems_Automation.git (fetch)
+origin  git@github.com:{ your github id}/COM511_Network_Systems_Automation.git (push)
 ```
 
 To sync with the upstream repo you need to add another remote repository
 ```
-$ git remote add upstream https://github.com/gallenc/COM615_Network-Management_1.git
+$ git remote add upstream https://github.com/gallenc/COM511_Network_Systems_Automation.git
 ```
 NOTE even if you are using SSH to access your own repo, you should use use https to access the upstream repo because you do not need a password or certificates to pull a public repo.
 
 To see the upstream repositories use
 ```
 $ git remote -v
-origin  https://github.com/{ your github id}/COM615_Network-Management_1.git (fetch)
-origin  https://github.com/{ your github id}/COM615_Network-Management_1.git (push)
-upstream        https://github.com/gallenc/COM615_Network-Management_1.git (fetch)
-upstream        https://github.com/gallenc/COM615_Network-Management_1.git (push)
+origin  https://github.com/{ your github id}/COM511_Network_Systems_Automation.git (fetch)
+origin  https://github.com/{ your github id}/COM511_Network_Systems_Automation.git (push)
+upstream        https://github.com/gallenc/COM511_Network_Systems_Automation.git (fetch)
+upstream        https://github.com/gallenc/COM511_Network_Systems_Automation.git (push)
 ```
 if you are using SSH this will be
 ```
 $ git remote -v
-origin  git@github.com:{ your github id}/COM615_Network-Management_1.git (fetch)
-origin  git@github.com:{ your github id}/COM615_Network-Management_1.git (push)
-upstream        https://github.com/gallenc/COM615_Network-Management_1.git (fetch)
-upstream        https://github.com/gallenc/COM615_Network-Management_1.git (push)
+origin  git@github.com:{ your github id}/COM511_Network_Systems_Automation.git (fetch)
+origin  git@github.com:{ your github id}/COM511_Network_Systems_Automation.git (push)
+upstream        https://github.com/gallenc/COM511_Network_Systems_Automation.git (fetch)
+upstream        https://github.com/gallenc/COM511_Network_Systems_Automation.git (push)
 ```
 
 Note that git calls the github repository which your repository is linked to `origin`.
 This is the repository on github where where push commands normally send the changes.
 The 'upstream' repository is an alternative repository from which you pull additional content for merging with your work.
 
-Having made these changes you can now keep your own fork of COM615_Network-Management_1 synchronised with the class examples in the upstream repository using a few Git commands.
+Having made these changes you can now keep your own fork of COM511_Network_Systems_Automation synchronised with the class examples in the upstream repository using a few Git commands.
 
 1. Fetch the branches and their respective commits from the upstream repository. 
 Commits to main will be stored in a local branch, upstream/main.
 ```
 git fetch upstream
-From https://github.com/gallenc/COM615_Network-Management_1
+From https://github.com/gallenc/COM511_Network_Systems_Automation
  * [new branch]      main     -> upstream/main
 remote: Enumerating objects: 18, done.
 remote: Counting objects: 100% (18/18), done.
 remote: Compressing objects: 100% (7/7), done.
 remote: Total 12 (delta 3), reused 12 (delta 3), pack-reused 0
 Unpacking objects: 100% (12/12), done.
-From https://github.com/gallenc/COM615_Network-Management_1
+From https://github.com/gallenc/COM511_Network_Systems_Automation
    ddd9643..bd85c0d  main     -> upstream/main
 ```
 
@@ -201,7 +201,7 @@ Compressing objects: 100% (10/10), done.
 Writing objects: 100% (12/12), 44.69 KiB | 0 bytes/s, done.
 Total 12 (delta 3), reused 0 (delta 0)
 remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
-To https://github.com/gallenc-test/COM615_Network-Management_1.git
+To https://github.com/gallenc-test/COM511_Network_Systems_Automation.git
    ddd9643..bd85c0d  main -> main
 
 git status
@@ -217,7 +217,7 @@ To synchronise your repository with the upstream use the following commands
 If you have not set up the upstream repo
 
 ```
-git remote add upstream https://github.com/gallenc/COM615_Network-Management_1.git
+git remote add upstream https://github.com/gallenc/COM511_Network_Systems_Automation.git
 ```
 Once the upstream is set, use
 
