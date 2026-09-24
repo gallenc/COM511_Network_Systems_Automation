@@ -59,11 +59,14 @@ You don't have to use your university email for this account if you don't wish t
 You may have to set up your mobile phone number and/or a personal authenticator app to allow 2 factor authentication.
 
 ## Forking this module's repository
+
+(note the images in this section refer to another example repository but the process is the same to fork this repo)
+
 Once you have set up your own account, you can `fork` the course examples repository.
 
 Log into your own account using your username and password.
 
-Navigate to the class examples `upstream` repository at [https://github.com/gallenc/COM615_Network-Management_1](https://github.com/gallenc/COM615_Network-Management_1)
+Navigate to the class examples `upstream` repository at [https://github.com/gallenc/COM511_Network_Systems_Automation](https://github.com/gallenc/COM511_Network_Systems_Automation)
 
 Press the `Fork` button and follow any instructions to fork the repository into your own account.
 
@@ -71,7 +74,7 @@ Press the `Fork` button and follow any instructions to fork the repository into 
 
 This will create a `clone` (or copy) of the `upstream` repository in your own account. 
 
-Navigate to your own cloned repository at https://github.com/_YOUR_USERNAME_/COM615_Network-Management_1/
+Navigate to your own cloned repository at https://github.com/_YOUR_USERNAME_/COM511_Network_Systems_Automation/
 (Where _YOUR_USERNAME_ is the username you chose for your github account)
 
 This is your own copy which you can modify and use as your choose.
@@ -83,7 +86,7 @@ You cannot write to the `upstream` repository but you can write to this `forked`
 * Your personal work in your repository will be part of the assessment.
 * By default you will be creating a `public` repository, which means anyone can look at it (but not modify it). 
   You could make this private and restrict access but we do not need to do this in this class.
-  (You will be creating your own personal learning record from this repo - but it will be easy to spot if this is not your own work when marking the submission)
+  (You will be creating your own notes from this repo - but it will be easy to spot if this is not your own work when marking the submission)
 
 ---
 
