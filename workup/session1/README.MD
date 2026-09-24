@@ -33,27 +33,9 @@ These include:
 | Orchestration | Ansible, Puppet, Chef, Salt, Kubernetes |
 | Programmable compute models and APIs | Virtualisation: Virtual Machines, Containers (Docker)<BR>Static configuration: Package Management, PXE Boot, Logical and Physical Inventory, Wiring schemes etc.<BR> Dynamic Configuration: DHCP, DNS, SDN OpenFlow, Cloud Stacks |
 
+All of these topics will be looked at in detail in the following weeks but for now we will lay revise or lay some foundations for the module
 
-## infrastructure as code approach
-
-## Git
-git - ssh based access - personal access tokens
-
-## Operating Systems
-
-## Virtualisation
-
-Virtualisation - type 1 / 2 hypervisor
-VirtualBox
-Vagrant
-
-# Getting Started with Vagrant and Virtual Box
-See [vagrant-examples](../session1/vagrant-examples)
-
-## User Management
-Post deploy script install what we need set up basic access
-SSH based access for users - public private keys
-
+Begin by looking at [Session 1 Notes and Exercises](./docs/sessionNotes.md)
 
 
 
