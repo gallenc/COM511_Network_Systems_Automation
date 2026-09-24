@@ -9,6 +9,11 @@ The networking and telecoms industry are rapidly pushing for convergence between
  
 So what do we need to do to manage a large fleet of servers and switches?
 
+<img src="./docs/images/CERN_Server_03.jpg" alt="CERN_Server_03.jpg" width="50%"/>
+
+
+
+
 ![alt text](./docs/images/CERN_Server_03.jpg "CERN_Server_03.jpg")
 (CERN Server Room https://commons.wikimedia.org/wiki/File:CERN_Server_03.jpg)
 
