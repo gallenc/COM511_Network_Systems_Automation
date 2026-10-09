@@ -78,6 +78,68 @@ ssh 192.168.100.254
 
 ```
 
-## Ansible configuration
+## Ansible configuration of Dnsmasq
 
-Ansible is installed on the `ansible_controler` and we will use ansible to install a simple DHCP/DNS server called [dnsmasq](https://thekelleys.org.uk/dnsmasq/doc.html)
+[Dnsmasq](https://thekelleys.org.uk/dnsmasq/doc.html) is a lightweight, easy-to-configure DNS forwarder, caching DNS server, and DHCP/TFTP server designed for small-scale local networks (LANs).
+
+We will install dnsmasq on our `ansible_controler` to turn it into our DHCP/DNS server for the other machines on the `dhcp_network`
+
+Ansible is installed on the `ansible_controler` and we will use ansible to install and configure `dnsmasq`, so that the other servers can use it to get their IP addresses.
+
+```
+vagrant ssh ansible_controler
+sudo su ansible
+
+cd /vagrant/ansible/project-ansible3-1
+
+ansible-playbook -i inventory/dev/hosts.ini  setup-dnsmasq-server.yml
+
+```
+
+```
+ sudo nmap --script broadcast-dhcp-discover -e eth1
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-10-09 13:02 UTC
+Pre-scan script results:
+| broadcast-dhcp-discover:
+|   Response 1 of 1:
+|     Interface: eth1
+|     IP Offered: 192.168.100.215
+|     DHCP Message Type: DHCPOFFER
+|     Server Identifier: 192.168.100.254
+|     IP Address Lease Time: 1h00m00s
+|     Renewal Time Value: 30m00s
+|     Rebinding Time Value: 52m30s
+|     Subnet Mask: 255.255.255.0
+|     Broadcast Address: 192.168.100.255
+|     NTP Servers: 10.0.2.15
+|     Domain Name: lab.example.com
+|     Domain Name Server: 10.0.2.15
+|_    Router: 192.168.100.254
+```
+
+```
+sudo tcpdump -i eth0 dst host <your_device_ip>
+
+
+sudo tcpdump -i eth1  host 192.168.100.254
+
+```
+
+Dnsmasq stores its current leases in the file `/var/lib/misc/dnsmasq.leases`
+
+You can see this with
+
+```
+cat /var/lib/misc/dnsmasq.leases
+1791553690 08:00:27:ff:ff:a2 192.168.100.10 ubuntu-1 ff:af:81:8f:7d:00:02:00:00:ab:11:74:80:e0:88:57:b1:f6:03
+1791553678 08:00:27:ff:ff:a3 192.168.100.20 ubuntu-2 ff:af:81:8f:7d:00:02:00:00:ab:11:49:a4:39:a6:dc:0a:34:67
+```
+
+dnsmasq.leases fields in order.
+1. Time of lease expiry, in epoch time (seconds since 1970). 
+2. MAC address.
+3. IP address.
+4. Computer name, if known. This is always unqualified (no domain part)
+5. Client-ID, if known. The client-ID is used as the computer's unique-ID in preference to the MAC address, if it's available. Some DHCP clients provide it, and some don't. The ones that do normally derive it from the MAC address unless explicity configured, but it could be something like a serial number, which would protect a computer from losing its identify if the network interface were replaced.
+
+

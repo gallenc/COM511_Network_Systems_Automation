@@ -21,7 +21,7 @@ sudo su ansible
 
 cd /vagrant/ansible/project-ansible3-1/
 
-ansible-playbook -i inventory/dev/hosts.ini  setup-dns-server.yml
+ansible-playbook -i inventory/dev/hosts.ini  setup-dnsmasq-server.yml
 
 ```
 
