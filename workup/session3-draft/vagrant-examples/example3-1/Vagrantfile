@@ -1,0 +1,160 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+    
+    # Ansible Controller
+    config.vm.define "ansible_controller" do |ansible_controller|
+
+       # note local box defined in another project
+       ansible_controller.vm.box = "bento/ubuntu-24.04"
+       
+       # ansible_controller.vm.synced_folder ".", "/vagrant", disabled: true
+       
+       ansible_controller.vm.hostname = "ansible-controller"
+
+       # Create a private network, which allows host-only access to the machine
+       # using a specific IP below DHCP range of virtual box
+       ansible_controller.vm.network "private_network",  ip: "192.168.100.254", virtualbox__intnet: "dhcp_network",  mac: "080027FFFFA1"
+
+       ansible_controller.vm.provider "virtualbox" do |vb|
+          # Display the VirtualBox GUI when booting the machine
+          vb.gui = true
+
+          # Customize the amount of memory on the VM:
+          vb.memory = "1024"
+          vb.cpus = 1
+       end
+
+       # add useful software
+       # mkpasswd is part of ubuntu whois package
+       ansible_controller.vm.provision "shell", inline: <<-SHELL
+          echo "adding software to ubuntu"
+          apt-get update
+          apt-get install -y whois git nmap dnsutils
+       SHELL
+
+       # install ansible from apt
+       # see https://www.cherryservers.com/blog/install-ansible-ubuntu-24-04
+       ansible_controller.vm.provision "shell", inline: <<-SHELL
+          apt update
+          apt install software-properties-common -y
+          add-apt-repository --yes --update ppa:ansible/ansible
+          apt install ansible -y
+          ansible --version
+       SHELL
+       
+       # this shell provisioner will run the ansible ssh provisioning file
+       ansible_controller.vm.provision "shell", path: "provision-users-ubuntu.sh"
+       
+       # this shell provisioner will run the ansible ssh provisioning file which sets up an ansible ssh login for all hosts
+       ansible_controller.vm.provision "shell", path: "generate-ansible-ssh.sh"
+
+     
+    end  # ansible_controller
+
+  # first machine
+  config.vm.define "ubuntu_1" do |ubuntu_1|
+  
+     # note local box defined in another project
+     ubuntu_1.vm.box = "bento/ubuntu-24.04"
+         
+     # ubuntu_1.vm.synced_folder ".", "/vagrant", disabled: true
+     
+     ubuntu_1.vm.hostname = "ubuntu-1"
+     
+     # Create a private network, which allows host-only access to the machine
+     # We need to specify an ip but we dont want it to stick as we will use dhcp to get an ip address from the ansible controller.
+     ubuntu_1.vm.network "private_network",  virtualbox__intnet: "dhcp_network", ip:"0.0.0.0",  mac: "080027FFFFA2"
+  
+     ubuntu_1.vm.provider "virtualbox" do |vb|
+        # Display the VirtualBox GUI when booting the machine
+        vb.gui = true
+  
+        # Customize the amount of memory on the VM:
+        vb.memory = "1024"
+        vb.cpus = 1
+     end
+     
+     # add useful software
+     # mkpasswd is part of ubuntu whois package
+     ubuntu_1.vm.provision "shell", inline: <<-SHELL
+        echo "adding software to ubuntu"
+        apt-get update
+        apt-get install -y whois git nmap dnsutils
+     SHELL
+     
+     # this shell provisioner will run the ansible ssh provisioning file
+     ubuntu_1.vm.provision "shell", path: "provision-users-ubuntu.sh"
+     
+     # this shell provisioner will run the ansible ssh provisioning file
+     ubuntu_1.vm.provision "shell", path: "generate-ansible-ssh.sh"
+     
+     # remove the default vagrant network config and reprovision interface with dhcp
+     # note Using sudo tee safely handles the root privileges needed to write the file.
+     ubuntu_1.vm.provision "shell", inline: <<-SHELL
+        echo "reprovision network with dhcp"
+        sudo rm /etc/netplan/50-vagrant.yaml
+        sudo printf "network:\n  version: 2\n  ethernets:\n    eth1:\n      dhcp4: true\n" | sudo tee /etc/netplan/01-eth1-dhcp.yaml > /dev/null
+        sudo chmod 600 /etc/netplan/01-eth1-dhcp.yaml
+        sudo netplan generate 
+        sudo netplan apply
+     SHELL
+   
+  end  # ubuntu_1
+  
+  # Second machine
+  config.vm.define "ubuntu_2" do |ubuntu_2|
+
+     # note local box defined in another project
+     ubuntu_2.vm.box = "bento/ubuntu-24.04"
+         
+     # ubuntu_2.vm.synced_folder ".", "/vagrant", disabled: true
+     
+     ubuntu_2.vm.hostname = "ubuntu-1"
+     
+     # Create a private network, which allows host-only access to the machine
+     # We need to specify an ip but we dont want it to stick as we will use dhcp to get an ip address from the ansible controller.
+     ubuntu_2.vm.network "private_network",  virtualbox__intnet: "dhcp_network", ip:"0.0.0.0", mac: "080027FFFFA3"
+
+     ubuntu_2.vm.provider "virtualbox" do |vb|
+        # Display the VirtualBox GUI when booting the machine
+        vb.gui = true
+
+        # Customize the amount of memory on the VM:
+        vb.memory = "1024"
+        vb.cpus = 1
+     end
+     
+     # add useful software
+     # mkpasswd is part of ubuntu whois package
+     ubuntu_2.vm.provision "shell", inline: <<-SHELL
+        echo "adding software to ubuntu"
+        apt-get update
+        apt-get install -y whois git nmap dnsutils
+     SHELL
+     
+     # this shell provisioner will run the ansible ssh provisioning file
+     ubuntu_2.vm.provision "shell", path: "provision-users-ubuntu.sh"
+     
+     # this shell provisioner will run the ansible ssh provisioning file
+     ubuntu_2.vm.provision "shell", path: "generate-ansible-ssh.sh"
+     
+     # remove the default vagrant network config and reprovision interface with dhcp
+     # note Using sudo tee safely handles the root privileges needed to write the file.
+     ubuntu_2.vm.provision "shell", inline: <<-SHELL
+        echo "reprovision network with dhcp"
+        sudo rm /etc/netplan/50-vagrant.yaml
+        sudo printf "network:\n  version: 2\n  ethernets:\n    eth1:\n      dhcp4: true\n" | sudo tee /etc/netplan/01-eth1-dhcp.yaml > /dev/null
+        sudo chmod 600 /etc/netplan/01-eth1-dhcp.yaml
+        sudo netplan generate 
+        sudo netplan apply
+     SHELL
+   
+  end  # ubuntu_2
+  
+end

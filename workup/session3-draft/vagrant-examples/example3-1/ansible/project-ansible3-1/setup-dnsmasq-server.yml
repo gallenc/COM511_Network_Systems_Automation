@@ -1,0 +1,16 @@
+# playbooks/setup-pxe-server.yml
+---
+- name: Configure DHCP and DNS server
+  hosts: dns_server
+  become: true
+
+  vars:
+
+  roles:
+    - dnsmasq-config
+
+  handlers:
+    - name: restart dnsmasq
+      ansible.builtin.service:
+        name: dnsmasq
+        state: restarted

@@ -1,0 +1,52 @@
+---
+    # Install required packages for dnsmasq
+    - name: Install dnsmasq server packages
+      ansible.builtin.apt:
+        name:
+          - dnsmasq
+        state: present
+         
+    # set up dnsmasq configuration for DHCP 
+    - name: Deploy dnsmasq.conf
+      ansible.builtin.template:
+        src: ./templates/dnsmasq.conf.j2
+        dest: /etc/dnsmasq.conf
+        mode: '0644'
+      notify: restart dnsmasq
+
+    - name: Deploy DHCP reservations
+      ansible.builtin.template:
+        src: ./templates/dhcp-reservations.conf.j2
+        dest: /etc/dnsmasq.d/reservations.conf
+        mode: '0644'
+      notify: restart dnsmasq
+      
+    - name: Capture DHCP reservations
+      command: cat /etc/dnsmasq.d/reservations.conf
+      register: dhcp_output
+
+    - name: Display DHCP reservations to console
+      debug:
+        msg: "{{ dhcp_output.stdout_lines }}"
+
+    # set up dnsmasq entires for local DNS resolution
+    - name: Deploy local DNS entries
+      ansible.builtin.template:
+        src: ./templates/local-dns.conf.j2
+        dest: /etc/dnsmasq.d/local-dns.conf
+        mode: '0644'
+      notify: restart dnsmasq
+      
+    - name: Capture local DNS entries
+      command: cat /etc/dnsmasq.d/local-dns.conf
+      register: dns_output
+
+    - name: Display local DNS entries to console
+      debug:
+        msg: "{{ dns_output.stdout_lines }}"
+
+    - name: Start Dnsmasq
+      ansible.builtin.service:
+        name: dnsmasq
+        state: started
+        enabled: true

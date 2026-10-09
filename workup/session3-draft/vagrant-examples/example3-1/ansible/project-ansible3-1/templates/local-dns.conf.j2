@@ -1,0 +1,23 @@
+# templates/local-dns.conf.j2
+# Local DNS entries from inventory
+{% for host in groups['all'] %}
+{% if hostvars[host].ansible_host | default('', true) | trim != ''  %}
+address=/{{ host }}.{{ dnsmasq_domain }}/{{ hostvars[host].ansible_host }}
+{% endif %}
+{% if hostvars[host].eth0_ip | default('', true) | trim != '' %}
+address=/{{ host }}-eth0.{{ dnsmasq_domain }}/{{ hostvars[host].eth0_ip }}
+{% endif %}
+{% if hostvars[host].eth1_ip | default('', true) | trim != '' %}
+address=/{{ host }}-eth1.{{ dnsmasq_domain }}/{{ hostvars[host].eth1_ip }}
+{% endif %}
+{% endfor %}
+
+# Additional DNS entries
+{% for entry in dnsmasq_dns_entries | default([]) %}
+address=/{{ entry.name }}/{{ entry.ip }}
+{% endfor %}
+
+# CNAME aliases
+{% for cname in dnsmasq_cnames | default([]) %}
+cname={{ cname.alias }},{{ cname.target }}
+{% endfor %}
