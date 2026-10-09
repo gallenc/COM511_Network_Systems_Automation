@@ -86,7 +86,37 @@ We will install dnsmasq on our `ansible_controler` to turn it into our DHCP/DNS 
 
 Ansible is installed on the `ansible_controler` and we will use ansible to install and configure `dnsmasq`, so that the other servers can use it to get their IP addresses.
 
-The Ansible  project which installs dnsmasq is in 
+The Ansible  project which installs `dnsmasq` is in [project-ansible3-1](../ansible/project-ansible3-1)
+
+The inventory is organised so that a `vars_file.yaml` contains variables which apply to all of the hosts in `hosts.ini`
+
+|`vars_file.yaml` variable                | Notes
+|:---------------------------------------------|:---------------------------------------|
+| dnsmasq_interface: eth1                      | The interface which dnsmasq will use i.e.it will provide a DHCP service only for the  `dhcp_network`  |
+| dnsmasq_dhcp_range_start: 192.168.100.210    | Starting address of DHCP address pool  |
+| dnsmasq_dhcp_range_end: 192.168.100.230      | Ending address of DHCP address pool    |
+| dnsmasq_dhcp_lease_time: 1h                  | After 1 hour, the address may be reassigned |
+| dnsmasq_gateway:   192.168.100.254           | The gateway address which will be given to the DHCP clients |
+| dnsmasq_dns_servers:<BR>#  - 194.81.151.70<BR>   - 8.8.8.8 | the DNS server which dnsmasq will use to resolve a query if it dosen't have a local address mapping (DNS proxy)      |
+| dnsmasq_domain: lab.example.com              | The local domain name which dnsmasq will append to each host address to resolve ip addresses |
+
+The `hosts.ini` inventory contains additional variables associated with each host as seen for the ubuntu-1 host below
+
+```
+ubuntu-1            eth0_ip=                  eth0_mac=                     eth1_ip=192.168.100.10                  eth1_mac=08:00:27:FF:FF:A2    ansible_host=192.168.100.10   ansible_port=22
+```
+
+1. The vagrant machine is named `ubuntu_1` because vagrant cannot use dash `-` characters in a machines name. However in the inventory file, we are giving the host the name `ubuntu-1` because dns names cannot have underscore characters `_`.
+2. We do not know the eth0 ip address or mac address as these are assigned by vagrant when the machine is created. Leave blank.
+3. We have assigned the mac address `08:00:27:FF:FF:A2` to `eth1` in the vagrant file (without colons)  `mac: "080027FFFFA2"`
+4. We want the DHCP server to assign IP address `192.168.100.10` to the nic with mac address `08:00:27:FF:FF:A2`
+
+`dnsmasq` uses configuration files in `/etc/dnsmasq.conf` and additional configurations in `/etc/dnsmasq.d/`
+
+The main work for configuration is done by the ansible role [dnsmasq-config](../ansible/project-ansible3-1/dnsmasq-config).
+The role generates the configuration using template files in the [templates](../ansible/project-ansible3-1/templates) folder.
+
+Spend some time reviewing these scripts until you understand how the configuration is being generated.
 
 ## Running the example
 
@@ -106,19 +136,29 @@ You can check the state of dnsmasq using
 sudo systemctl status dnsmasq
 ```
 
-If the script completes and dnsmasq starts correctly, it will hand out leases immediately to the `ubuntu_1 and ubuntu_2` servers' `eth1` nics.
+If the script completes and dnsmasq starts correctly, it will hand out leases immediately to the `eth1` nics on the `ubuntu_1` and `ubuntu_2` servers.
 
-Dnsmasq stores its current leases in the file `/var/lib/misc/dnsmasq.leases`
+you can view the generated dnsmasq configuration files using
+
+```
+sudo cat `/etc/dnsmasq.conf`
+
+sudo cat `/etc/dnsmasq.d/reservations.conf`
+
+sudo cat `/etc/dnsmasq.d/localdns.conf`
+```
+
+When running, Dnsmasq stores its current leases in the file `/var/lib/misc/dnsmasq.leases`
 
 You can see the current leases in the `dnsmasq.leases` file using
 
 ```
-cat /var/lib/misc/dnsmasq.leases
+sudo cat /var/lib/misc/dnsmasq.leases
 1791553690 08:00:27:ff:ff:a2 192.168.100.10 ubuntu-1 ff:af:81:8f:7d:00:02:00:00:ab:11:74:80:e0:88:57:b1:f6:03
 1791553678 08:00:27:ff:ff:a3 192.168.100.20 ubuntu-2 ff:af:81:8f:7d:00:02:00:00:ab:11:49:a4:39:a6:dc:0a:34:67
 ```
 
-`dnsmasq.leases` fields in order:
+the `dnsmasq.leases` fields in order are:
 
 1. Time of lease expiry, in epoch time (seconds since 1970). 
 2. MAC address.
@@ -134,8 +174,10 @@ You should also now be able to ping the servers and ssh into them using through 
 |ubuntu-1           | 192.168.100.20 <BR>                  | Ubuntu 24.04                | DHCP assigned address        |
 |ubuntu-2           | 192.168.100.30 <BR>                  | Ubuntu 24.04                | DHCP assigned address        |
 
-It is also possible to test the DHCP server by simulating a DHCP request from any of the machines using the [nmap](https://nmap.org/) utility
+It is also possible to test the DHCP server by simulating a DHCP request from any of the machines using the [nmap](https://nmap.org/) utility.
+
 In this case, the server will send back a suggested IP address in response.
+
 Specify `eth1` as this is interface on the internal `dhcp_network`
 
 ```
