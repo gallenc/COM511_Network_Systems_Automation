@@ -50,7 +50,7 @@ If the pool is exhausted, no more addresses will be issued until a lease expires
 ---
 **Exercise 3.1**
 
-Follow the notes  in [example3-1](../example3-1) to set up a dnsmasq DHCP server using ansible which can issue addresses to two other machines
+Follow the notes  in [example3-1](../vagrant-examples/example3-1) to set up a dnsmasq DHCP server using ansible which can issue addresses to two other machines
 * Make sure you understand the vagrant / virtualbox networking
 * Can you understand the dnsmasq DHCP configuration and how it is created with ansible
 * Can you use tcpdump to follow the DHCP requests and responses
