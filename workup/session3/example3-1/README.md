@@ -86,6 +86,10 @@ We will install dnsmasq on our `ansible_controler` to turn it into our DHCP/DNS 
 
 Ansible is installed on the `ansible_controler` and we will use ansible to install and configure `dnsmasq`, so that the other servers can use it to get their IP addresses.
 
+The Ansible  project which installs dnsmasq is in 
+
+## Running the example
+
 ```
 vagrant ssh ansible_controler
 sudo su ansible
@@ -96,8 +100,47 @@ ansible-playbook -i inventory/dev/hosts.ini  setup-dnsmasq-server.yml
 
 ```
 
+You can check the state of dnsmasq using
+
 ```
- sudo nmap --script broadcast-dhcp-discover -e eth1
+sudo systemctl status dnsmasq
+```
+
+If the script completes and dnsmasq starts correctly, it will hand out leases immediately to the `ubuntu_1 and ubuntu_2` servers' `eth1` nics.
+
+Dnsmasq stores its current leases in the file `/var/lib/misc/dnsmasq.leases`
+
+You can see the current leases in the `dnsmasq.leases` file using
+
+```
+cat /var/lib/misc/dnsmasq.leases
+1791553690 08:00:27:ff:ff:a2 192.168.100.10 ubuntu-1 ff:af:81:8f:7d:00:02:00:00:ab:11:74:80:e0:88:57:b1:f6:03
+1791553678 08:00:27:ff:ff:a3 192.168.100.20 ubuntu-2 ff:af:81:8f:7d:00:02:00:00:ab:11:49:a4:39:a6:dc:0a:34:67
+```
+
+`dnsmasq.leases` fields in order:
+
+1. Time of lease expiry, in epoch time (seconds since 1970). 
+2. MAC address.
+3. IP address.
+4. Computer name, if known. This is always unqualified (no domain part)
+5. Client-ID, if known. The client-ID is used as the computer's unique-ID in preference to the MAC address, if it's available. Some DHCP clients provide it, and some don't. The ones that do normally derive it from the MAC address unless explicity configured, but it could be something like a serial number, which would protect a computer from losing its identify if the network interface were replaced.
+
+You should also now be able to ping the servers and ssh into them using through the internal `dhcp_network` using the credentials user: admin password: minad1234
+
+|Name               | ip address eth1                      | Operating System            | Notes                       |
+|:------------------|:-------------------------------------|:----------------------------|:----------------------------|
+|ansible-controller | 192.168.100.254 <BR>                 | Ubuntu 24.04                | installed ansible , dnsmasq |
+|ubuntu-1           | 192.168.100.20 <BR>                  | Ubuntu 24.04                | DHCP assigned address        |
+|ubuntu-2           | 192.168.100.30 <BR>                  | Ubuntu 24.04                | DHCP assigned address        |
+
+It is also possible to test the DHCP server by simulating a DHCP request from any of the machines using the [nmap](https://nmap.org/) utility
+In this case, the server will send back a suggested IP address in response.
+Specify `eth1` as this is interface on the internal `dhcp_network`
+
+```
+sudo nmap --script broadcast-dhcp-discover -e eth1
+
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-10-09 13:02 UTC
 Pre-scan script results:
 | broadcast-dhcp-discover:
@@ -117,29 +160,12 @@ Pre-scan script results:
 |_    Router: 192.168.100.254
 ```
 
+
+It is also possible to see that is happening using tcpdump with the required interface
 ```
-sudo tcpdump -i eth0 dst host <your_device_ip>
+sudo tcpdump -i eth1 dst host <your_device_ip>
 
 
 sudo tcpdump -i eth1  host 192.168.100.254
 
 ```
-
-Dnsmasq stores its current leases in the file `/var/lib/misc/dnsmasq.leases`
-
-You can see this with
-
-```
-cat /var/lib/misc/dnsmasq.leases
-1791553690 08:00:27:ff:ff:a2 192.168.100.10 ubuntu-1 ff:af:81:8f:7d:00:02:00:00:ab:11:74:80:e0:88:57:b1:f6:03
-1791553678 08:00:27:ff:ff:a3 192.168.100.20 ubuntu-2 ff:af:81:8f:7d:00:02:00:00:ab:11:49:a4:39:a6:dc:0a:34:67
-```
-
-dnsmasq.leases fields in order.
-1. Time of lease expiry, in epoch time (seconds since 1970). 
-2. MAC address.
-3. IP address.
-4. Computer name, if known. This is always unqualified (no domain part)
-5. Client-ID, if known. The client-ID is used as the computer's unique-ID in preference to the MAC address, if it's available. Some DHCP clients provide it, and some don't. The ones that do normally derive it from the MAC address unless explicity configured, but it could be something like a serial number, which would protect a computer from losing its identify if the network interface were replaced.
-
-
