@@ -45,7 +45,7 @@ We are actually going to pxe boot an ubuntu machine but vagrant needs a box to s
 
 Looking at the virtualbox ui for the client machine, you will see it first attempts a pxe boot using the pxe boot server.
 
-<img src="../docs/images/pxe-boot-menu.png" alt="pxe-boot-menu.png" width="50%"/>
+<img src="../../docs/images/pxe-boot-menu.png" alt="pxe-boot-menu.png" width="50%"/>
 
 You will be presented with a menu for either selecting `Install ubuntu server from pxe boot` or `Local Boot`.
 

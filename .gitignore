@@ -66,3 +66,6 @@ core-deploy/
 
 # vagrant
 .vagrant
+
+# used for shared ansible ssh keys
+.ssh-ansible
