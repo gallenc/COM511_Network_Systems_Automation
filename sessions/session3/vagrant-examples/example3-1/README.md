@@ -8,7 +8,7 @@ Our [Vagrantfile](./Vagrantfile) defines three ubuntu 24 machines called , `ubun
 
 `ansible_controller` will be our DHCP server and our Ansible controller node. 
 (It will also be used as a DNS server in later experiments).
-
+under
 All of the machines are connected to the NAT network so that we can SSH into them using `vagrant ssh`
 
 A new internal network is also created with the name `dhcp_network`. 
