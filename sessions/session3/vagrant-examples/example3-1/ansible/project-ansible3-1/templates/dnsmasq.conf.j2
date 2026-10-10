@@ -12,9 +12,9 @@ local=/{{ dnsmasq_domain }}/
 # DHCP
 dhcp-range={{ dnsmasq_dhcp_range_start }},{{ dnsmasq_dhcp_range_end }},{{ dnsmasq_dhcp_lease_time }}
 dhcp-option=option:router,{{ dnsmasq_gateway }}
-dhcp-option=option:dns-server,{{ ansible_default_ipv4.address }}
+dhcp-option=option:dns-server,{{ ansible_facts['default_ipv4']['address'] }}
 dhcp-option=option:domain-name,{{ dnsmasq_domain }}
-dhcp-option=option:ntp-server,{{ ansible_default_ipv4.address }}
+dhcp-option=option:ntp-server,{{ ansible_facts['default_ipv4']['address'] }}
 dhcp-authoritative
 
 # removed dhcp-leasefile option to avoid permission issues with dnsmasq running as non-root user

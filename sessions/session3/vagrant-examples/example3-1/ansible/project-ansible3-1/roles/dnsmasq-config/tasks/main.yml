@@ -5,6 +5,21 @@
         name:
           - dnsmasq
         state: present
+        
+      # Fix DNS resolution issues common in VirtualBox  {{hostvars[inventory_hostname].eth1_ip}}
+      # see https://fabiorehm.com/blog/2025/08/25/bulletproof-ubuntu-desktop-vagrant-virtualbox/#4-fix-dns-resolution-first
+      # 10.0.2.3  is the nameserver used in virtualbox NAT network, which is the default network for Vagrant boxes
+    - name: remove systemd-resolved
+      become: true
+      ansible.builtin.shell: |
+         systemctl stop systemd-resolved || true
+         systemctl disable systemd-resolved || true
+         systemctl mask systemd-resolved || true
+         chattr -i /etc/resolv.conf 2>/dev/null || true
+         rm -f /etc/resolv.conf
+         printf 'nameserver {{hostvars[inventory_hostname].eth1_ip}}  # new dnsmasq nameserver \nnameserver 10.0.2.3   # nameserver used in virtualbox NAT network \n' > /etc/resolv.conf
+         chattr +i /etc/resolv.conf
+         exit 0
          
     # set up dnsmasq configuration for DHCP 
     - name: Deploy dnsmasq.conf
