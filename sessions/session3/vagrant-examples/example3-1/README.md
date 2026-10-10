@@ -202,8 +202,108 @@ Pre-scan script results:
 |_    Router: 192.168.100.254
 ```
 
+## DNS Example using dnsmasq
 
-It is also possible to see that is happening using tcpdump with the required interface
+Dnamasq can also run as a DNS server in the `ansible_controller` machine and this configuration is also set up using Ansible.
+
+The `local-dns.conf` template is used to generate a file in `/etc/dnsmasq.d/local-dns.conf` which contains the dns name mappings.
+Each server host name name in the inventory is appended to the `dnsmasq_domain` which is `lab.example.com` to create the fully qualified domain name.
+
+```
+# templates/local-dns.conf.j2
+# Local DNS entries from inventory
+address=/ansible-controller.lab.example.com/192.168.100.254
+address=/ansible-controller-eth1.lab.example.com/192.168.100.254
+address=/ubuntu-1.lab.example.com/192.168.100.10
+address=/ubuntu-1-eth1.lab.example.com/192.168.100.10
+address=/ubuntu-2.lab.example.com/192.168.100.20
+address=/ubuntu-2-eth1.lab.example.com/192.168.100.20
+```
+
+`etc/dhsmasq.conf` also contains entries for upstream dns servers
+
+```
+server=10.0.2.3
+server=8.8.8.8
+```
+This allows dnsmasq to look up external dns servers if the request cannot be satisfied from the above local configuration.
+
+The `10.0.2.3` server is the address of the VirtualBox DNS server within the NAT network. 
+This is the preferred server and will be resolved by the default dns server in the VirtualBox host system.
+
+`8.8.8.8` is google's DNS and is supplied as a fallback.
+(Note that if you are using a university wireless network, only the network's dns server an be used and (`8.8.8.8`) may not be allowed).
+
+Ubuntu now uses `systemd-resolved` as a local dns cache. 
+
+You can find out more about systemd-resolved from [What Is `systemd-resolved` and Why Ubuntu Relies on It](https://cloudhousetechnologies.com/blog/how-to-fix-ubuntu-dns-resolution-failures-with-systemd-resolved)   
+
+`systemd-resolved` uses the same UDP ports and cannot run at the same time a `dnsmasq`, so we need to remove it in the ansible script.
+
+After removing `systemd-resolved`, sw can configure dnsmasq and tell Ubuntu which dns servers to use through `etc/resolve.conf`
+
+```
+# /etc/resolv.conf
+nameserver 192.168.100.254  # new dnsmasq nameserver
+nameserver 10.0.2.3   # nameserver used in virtualbox NAT network
+```
+We want the server to prefer the new dnsmasq nameserver but we provide a fall back to the NAT DNS server in case it fails.
+
+The above configuration is created by the `setup-dnsmasq-server.yml` playbook.
+
+We also need to tell the guests to use the new dnsmasq nameserver.
+
+Once the first script is run, dnsmasq will supply each of the host machines with an IP address.
+
+We can now use ansible to configure those machines to also use the new DNS server.
+THis is done using the `setup-guest-dns.yml` playbook.
+
+```
+vagrant ssh ansible_controler
+sudo su ansible
+
+cd /vagrant/ansible/project-ansible3-1
+
+ansible-playbook -i inventory/dev/hosts.ini  setup-guest-dns.yml
+
+```
+
+(Remember that you will first need to log into each machine from the ansible account to establish it as a trusted host, or modify the command to allow untrusted ssh logins). 
+
+
+### Testing
+
+Having set up the new DNS server, you should be able to test it using simple `ping`,  [nslookup](https://manpages.ubuntu.com/manpages/jammy/man1/nslookup.1.html) or [dig](https://manpages.ubuntu.com/manpages/stonking/man1/dig.1.html)
+
+```
+# this command will look up google.com using the NAT name server at 10.0.2.3
+nslookup google.com 10.0.2.3
+
+# this command will look up google.com using the dnsmasq name server at 192.168.100.254
+nslookup google.com 192.168.100.254
+
+# you can also use dig (@192.168.100.254 specifies the dnsmasq name server)
+dig @192.168.100.254 google.com
+
+#You should also be able to look up the new domain names and ssh into them from the ansible_controller ansible account
+
+ping ubuntu-1.lab.example.com
+
+nslookup ubuntu-1.lab.example.com
+
+nslookup ubuntu-1.lab.example.com 192.168.100.254
+
+ssh ansible@ubuntu-1.lab.example.com
+
+# However this should fail because the NAT dns resolver doesn't know this domain name
+nslookup ubuntu-1.lab.example.com 10.0.2.3
+
+Try logging into the other servers and see if you can also resolve the domain names from those machines
+
+```
+
+It is also possible to see the dns lookups using tcpdump with the required interface
+
 ```
 sudo tcpdump -i eth1 dst host <your_device_ip>
 

@@ -59,5 +59,25 @@ Follow the notes  in [example3-1](../vagrant-examples/example3-1) to set up a dn
 
 # DNS Configuration
 
+The Domain Name System (DNS) is used to resolve human readable domain names into IP addresses. 
+
+The core specifications for the Domain Name System (DNS) are defined in [RFC 1034](https://www.rfc-editor.org/info/rfc1034/) and [RFC 1035](https://www.rfc-editor.org/info/rfc1035/), which outline the architecture, concepts, and implementation details
+
+Have a look at [DNS Explained in 3 minutes](https://www.youtube.com/watch?v=Mer7epZFJms)
+
+In our network we need to assign local dns names to the new servers in our lab and set up a local DNS server which will allow all of the servers in the lab to use these DNS  names. 
+
+---
+**Exercise 3.2**
+
+Follow the notes  in [example3-1](../vagrant-examples/example3-1) to set up a dnsmasq DHCP server using ansible which can issue addresses to two other machines
+* Make sure you understand the vagrant / virtualbox networking
+* Can you understand the dnsmasq DHCP configuration and how it is created with ansible
+* Can you use tcpdump to follow the DHCP requests and responses
+
+---
+
+
+
 
 
