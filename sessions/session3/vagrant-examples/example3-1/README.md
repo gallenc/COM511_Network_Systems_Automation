@@ -4,7 +4,7 @@ In this example we will use vagrant to set up three ubuntu machines to demonstra
 
 ## Vagrant configuration
 
-Our [Vagrantfile](./Vagrantfile) defines three ubuntu 24 machines called , `ubuntu_1` and `ubuntu_2`
+Our [Vagrantfile](./Vagrantfile) defines three ubuntu 24 machines called , `ubuntu_1` and `ubuntu_2` and `ansible_controller`.
 
 `ansible_controller` will be our DHCP server and our Ansible controller node. 
 (It will also be used as a DNS server in later experiments).
