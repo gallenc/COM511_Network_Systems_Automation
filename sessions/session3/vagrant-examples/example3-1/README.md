@@ -11,9 +11,9 @@ Our [Vagrantfile](./Vagrantfile) defines three ubuntu 24 machines called , `ubun
 
 All of the machines are connected to the NAT network so that we can SSH into them using `vagrant ssh`
 
-A new internal network is also created with the name "dhcp_network". 
+A new internal network is also created with the name `dhcp_network`. 
 
-Internal networks are only visible to the internal guests and not to the host.
+VirtualBox Internal Networks are only visible to the internal guests and not to the host.
 They do not have an internal DHCP server.
 (For more information see [https://developer.hashicorp.com/vagrant/docs/providers/virtualbox/networking](https://developer.hashicorp.com/vagrant/docs/providers/virtualbox/networking))
 
@@ -23,7 +23,7 @@ Normally VirtualBox generates virtual MAC addresses by combining a fixed vendor 
 
 In this example, we do not want generated MAC addresses, so we assign specific MAC addresses to each machine.
 
-The `ansible_controller` is given an IP address `192.168.100.254` and a unique MAC address `080027FFFFA1` on this network using the Vagrantfile line
+The `ansible_controller` is given an IP address `192.168.100.254` and a unique MAC address `080027FFFFA1` on the `dhcp_network` using the Vagrantfile line:
 
 ```
 ansible_controller.vm.network "private_network",  ip: "192.168.100.254", virtualbox__intnet: "dhcp_network",  mac: "080027FFFFA1"
@@ -35,9 +35,7 @@ Vagrant requires us to specify an IP address so we give them a bogus `0.0.0.0` I
 
 ```
 ubuntu_1.vm.network "private_network",  virtualbox__intnet: "dhcp_network", ip:"0.0.0.0",  mac: "080027FFFFA2"
-
 ...
-
 ubuntu_2.vm.network "private_network",  virtualbox__intnet: "dhcp_network", ip:"0.0.0.0",  mac: "080027FFFFA3"
 ```
 
@@ -50,7 +48,6 @@ To start the lab use:
 ```
 cd example3-1
 vagrant up 
-
 ```
 (this may take some time to start)
 
@@ -63,7 +60,6 @@ Current machine states:
 ansible_controller        running (virtualbox)
 ubuntu_1                  running (virtualbox)
 ubuntu_2                  running (virtualbox)
-
 ```
 Log into the `ansible_controler`, change to the `ansible` user and make sure you can ssh to the `ansible_controller` on address `192.168.100.254`.
 (accept any host keys)
@@ -74,8 +70,7 @@ sudo su ansible
 
 ssh 192.168.100.254
 
-# exit from the machine if you can log in.
-
+# exit from the machine after you have logged in.
 ```
 
 ## Ansible configuration of Dnsmasq
@@ -265,11 +260,9 @@ sudo su ansible
 cd /vagrant/ansible/project-ansible3-1
 
 ansible-playbook -i inventory/dev/hosts.ini  setup-guest-dns.yml
-
 ```
 
 (Remember that you will first need to log into each machine from the ansible account to establish it as a trusted host, or modify the command to allow untrusted ssh logins). 
-
 
 ### Testing
 
@@ -297,17 +290,14 @@ ssh ansible@ubuntu-1.lab.example.com
 
 # However this should fail because the NAT dns resolver doesn't know this domain name
 nslookup ubuntu-1.lab.example.com 10.0.2.3
+```
 
 Try logging into the other servers and see if you can also resolve the domain names from those machines
-
-```
 
 It is also possible to see the dns lookups using tcpdump with the required interface
 
 ```
 sudo tcpdump -i eth1 dst host <your_device_ip>
 
-
 sudo tcpdump -i eth1  host 192.168.100.254
-
 ```
