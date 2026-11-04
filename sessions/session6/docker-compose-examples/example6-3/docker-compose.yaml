@@ -27,7 +27,7 @@ services:
   # test wordpress mysql/mariadb database
   db:
     # We use a mariadb image which supports both amd64 & arm64 architecture
-    image: mariadb:10.6.4-focal
+    image: mariadb:${MARIADB_IMAGE_VERSION:-latest}
     # If you really want to use MySQL, uncomment the following line
     #image: mysql:8.0.27
     container_name: db
@@ -88,7 +88,7 @@ services:
   wordpress1:
     depends_on:
       - db
-    image: wordpress:latest
+    image: wordpress:${WORDPRESS_IMAGE_VERSION:-latest}
     container_name: wordpress1
     hostname: wordpress1
     ports:
