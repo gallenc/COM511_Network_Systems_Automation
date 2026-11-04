@@ -40,7 +40,7 @@ Since that time the number of users and contributors has grown into a world wide
 * OEM Vendors - package OpenNMS as an IP mediation layer within their own Network or Element management solution set.
 * Researchers and Educators - leaverage OpenNMS for researching or teaching topics in Service Assurance for next generation networks.
 
-An overview of the major capabilities of OpenNMS is provided in the following slide presentation [OpenNMS_Overview-v1.1.pdf](../session1/OpenNMS_Overview-v1.1.pdf)
+An overview of the major capabilities of OpenNMS is provided in the following slide presentation [OpenNMS_Overview-v1.1.pdf](./OpenNMS_Overview-v1.1.pdf)
 
 ### Documentation
 Comprehensive documentation on using the OpenNMS project is provided through the [OpenNMS Documentation Site](https://docs.opennms.com/start-page/1.0.0/index.html).
