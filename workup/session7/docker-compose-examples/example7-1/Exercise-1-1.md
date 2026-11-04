@@ -6,11 +6,11 @@
 
 All of the examples in this set of tutorials use docker compose to create an OpenNMS system and also to simulate networks or servers which we wish to manage.
 
-The first tutorial example uses the docker compose project in the folder [minimal-minion-activemq](../session1/minimal-minion-activemq)
+The first tutorial example uses the docker compose project in the folder [minimal-minion-activemq](./minimal-minion-activemq)
 
-The  [docker-compose.yaml](../session1/minimal-minion-activemq/docker-compose.yaml) file configures an opennms horizon with its database, an opennms minion and six test servers running netsnmp.
+The  [docker-compose.yaml](./minimal-minion-activemq/docker-compose.yaml) file configures an opennms horizon with its database, an opennms minion and six test servers running netsnmp.
 
-The configurations for each of the containers are held in separate folders under the [container-fs](../session1/minimal-minion-activemq/container-fs) folder
+The configurations for each of the containers are held in separate folders under the [container-fs](./minimal-minion-activemq/container-fs) folder
 
 We will look at OpenNMS configuration in detail as we move forwards, but In this first example, we simply want to get OpenNMS running and scanning a simple network.
 
@@ -87,9 +87,9 @@ docker compose down -v
 
 ## Example network
 
-The docker compose [docker-compose.yaml](../session1/minimal-minion-activemq/docker-compose.yaml) example creates an example network illustrated in the following image
+The docker compose [docker-compose.yaml](.//minimal-minion-activemq/docker-compose.yaml) example creates an example network illustrated in the following image
 
-![alt text](../session1/images/examplenetwork1.drawio.png "Figure examplenetwork1.drawio.png")
+![alt text](./images/examplenetwork1.drawio.png "Figure examplenetwork1.drawio.png")
 
 The ip addresses of all of the nodes have been explicitly defined in this example rather than being randomly allocated by docker.
 
@@ -151,7 +151,7 @@ We will now show how to discover a network over a range of IP addresses
 
 Log into the OpenNMS UI as shown above and navigate to the admin page by selecting the cogs.
 
-![alt text](../session1/images/adminPage.png "Figure adminPage.png")
+![alt text](./images/adminPage.png "Figure adminPage.png")
 
 Select `Configure Discovery` and enter two discovery ranges
 
@@ -161,9 +161,9 @@ Select `Configure Discovery` and enter two discovery ranges
 ```
 Then select Save and Restart Discovery
 
-![alt text](../session1/images/DiscoveryConfig.png "Figure DiscoveryConfig.png")
+![alt text](.images/DiscoveryConfig.png "Figure DiscoveryConfig.png")
 
-![alt text](../session1/images/DiscoveryRange.png "Figure DiscoveryRange.png")
+![alt text](./images/DiscoveryRange.png "Figure DiscoveryRange.png")
 
 Discovery will take 30 seconds to start but once started, the system will sequentially poll all the addresses in a given discovery range.
 If the location is set to `default`, the horizon server will do a direct scan of the local network.
@@ -180,11 +180,11 @@ After a few minutes, OpenNMS should have discovered all of the servers in the ra
 
 You can examine the discovered nodes on the info/nodes page
 
-![alt text](../session1/images/nodes.png "Figure nodes.png")
+![alt text](./images/nodes.png "Figure nodes.png")
 
 If you click on `show interfaces` you will see the interfaces associated with each node.
 
-![alt text](../session1/images/nodesandinterfaces.png "Figure nodesandinterfaces.png")
+![alt text](./images/nodesandinterfaces.png "Figure nodesandinterfaces.png")
 
 Note that 172.20.0.1 and 172.20.2.1 are the discovered docker gateway interfaces on the N000 and N001 networks.
 
