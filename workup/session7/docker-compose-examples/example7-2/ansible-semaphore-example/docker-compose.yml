@@ -121,36 +121,6 @@ services:
       N020:
         ipv4_address: 172.20.0.21
   
-  # Localstack AWS simulation     
-  localstack:
-    container_name: "${LOCALSTACK_DOCKER_NAME:-localstack-main}"
-    image: localstack/localstack:4.13.1
-    ports:
-      - "127.0.0.1:4566:4566"            # LocalStack Gateway
-      - "127.0.0.1:4510-4559:4510-4559"  # external services port range
-    environment:
-      # LocalStack configuration: https://docs.localstack.cloud/references/configuration/
-      - DEBUG=${DEBUG:-0}
-    volumes:
-      - localstack-data:/var/lib/localstack"
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      
-
-  # see https://stackoverflow.com/questions/69735582/aws-cli-image-rrun-from-docker-compose-and-its-shutdon-after-one-second
-  # try docker compose exec aws-cli bash
-  # aws help
-  aws-cli:
-    image: amazon/aws-cli:latest
-    container_name: aws-cli
-    stdin_open: true # equivalent of -i
-    tty: true        # equivalent of -t
-    entrypoint: tail -f /dev/null
-    environment:
-      - HTTP_PROXY=http://ipadresses:port
-      - HTTPS_PROXY=https://ipadresses:port
-    ports:
-      - "8080:8080"
-
   # IMAGES WITH SYSTEMD
   # USING https://github.com/antmelekhin/docker-systemd IMAGES
   
