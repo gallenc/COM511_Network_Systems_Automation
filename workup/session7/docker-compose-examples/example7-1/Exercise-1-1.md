@@ -59,11 +59,11 @@ At which point, OpenNMS has booted correctly.
 
 You should now be able to browse to the OpenNMS terminal on
 
-http://localhost:8980/opennms
+[http://localhost:8980/opennms](http://localhost:8980/opennms)
 
 or possibly if running docker desktop in windows with IPv6
 
-http://[::1]:8980/opennms
+[http://[::1]:8980/opennms](http://[::1]:8980/opennms)
 
 Login with 
 ```
