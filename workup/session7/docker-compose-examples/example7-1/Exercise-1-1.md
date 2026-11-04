@@ -1,6 +1,4 @@
-[Main Menu](../README.md) | [Session 1](../session1/README.md) | [Exercise-1-1](../session1/Exercise-1-1.md)
-
-# Exercise 1-1 
+# Exercise 1-1 OpenNMS
 
 ## Getting started with A Docker Compose Project
 
