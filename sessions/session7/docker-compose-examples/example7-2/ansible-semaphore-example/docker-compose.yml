@@ -122,8 +122,8 @@ services:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
         #cgroupns: host  ## not allowed in docker compose? not needed :)
-      - ../shared-files/:/share
-      - ../.shared-keys/:/shared-keys
+      - ./container-fs/share:/share
+      - ssh-keys:/ssh-keys
 
       # Added to simulate docker in docker for testing ansible docker module with systemd hosts. 
       # This allows the container to access the host's docker daemon. Be careful with this in production environments as it can pose security risks.
@@ -160,8 +160,8 @@ services:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
           #cgroupns: host  ## not allowed in docker compose? not needed :)
-      - ../shared-files/:/share
-      - ../.shared-keys/:/shared-keys
+      - ./container-fs/share:/share
+      - ssh-keys:/ssh-keys
 
     post_start:
       - command: ["sh", "-c", "/share/with-secrets.sh /share/generate-ansible-user-ssh.sh"]
@@ -172,3 +172,49 @@ services:
     networks:
       N020:
         ipv4_address: 172.20.0.28
+
+  # IMAGES WITH SSH BUT NO SYSTEMD
+  ## test container - no systemd
+#  ubuntu1:
+#    container_name: ubuntu1
+#    image: ubuntu-local
+#    build: ./container-fs/nosystemd/ubuntu
+#    restart: on-failure
+#    secrets:
+#      - ANSIBLE_SSH_PASSPHRASE
+#      - ANSIBLE_ROOT_PASSWORD
+#    environment:
+#      ROOT_PASSWORD: minad1234
+#    volumes:
+#      - ./container-fs/share:/share
+#      - ssh-keys:/ssh-keys
+#    post_start:
+#      - command: ["sh", "-c", "/share/with-secrets.sh /share/generate-ansible-user-ssh.sh"]
+#    depends_on:
+#      -  semaphore
+#    networks:
+#      N020:
+#        ipv4_address: 172.20.0.22
+#        
+#  ## test container - no systemd
+#  alma1:
+#    container_name: alma1
+#    image: alma10-local
+#    build: ./container-fs/nosystemd/almalinux
+#    restart: on-failure
+#    secrets:
+#      - ANSIBLE_SSH_PASSPHRASE
+#      - ANSIBLE_ROOT_PASSWORD
+#    environment:
+#      ROOT_PASSWORD: minad1234
+#    volumes:
+#      - ./container-fs/share:/share
+#      - ssh-keys:/ssh-keys
+#    post_start:
+#      - command: ["sh", "-c", "/share/with-secrets.sh /share/generate-ansible-user-ssh.sh"]
+#    depends_on:
+#      -  ubuntu1
+#    networks:
+#      N020:
+#        ipv4_address: 172.20.0.23
+#      
