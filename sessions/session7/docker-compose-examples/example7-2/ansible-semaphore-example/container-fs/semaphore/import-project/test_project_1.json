@@ -10,7 +10,7 @@
   "integrations": [],
   "inventories": [
     {
-      "inventory": "/sessions/session7/docker-compose-examples/example7-2/ansible-semaphore-example/ansible/project-ansibleA/inventory.ini",
+      "inventory": "sessions/session7/docker-compose-examples/example7-2/ansible-semaphore-example/ansible/project-ansibleA/inventory.ini",
       "name": "project-ansibleA-inventory",
       "ssh_key": "None",
       "type": "file"
