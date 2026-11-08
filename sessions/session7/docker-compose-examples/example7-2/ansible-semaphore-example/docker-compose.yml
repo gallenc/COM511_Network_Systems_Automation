@@ -141,7 +141,7 @@ services:
     ports:
       - "8084:80"
     networks:
-      N000:
+      N020:
         ipv4_address: 172.20.0.26
   
   # from https://hub.docker.com/layers/antmelekhin/docker-systemd/ubuntu-24.04/
@@ -170,5 +170,5 @@ services:
     ports:
       - "8085:80"
     networks:
-      N000:
+      N020:
         ipv4_address: 172.20.0.28
