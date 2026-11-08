@@ -10,9 +10,7 @@ networks:
         - subnet: 172.20.0.0/24
 
 volumes:
-  #semaphore-mysql: # to use postgres, switch to: semaphore-postgres
   semaphore-postgres:
-  localstack-data:
   ssh-keys:
   
 secrets:
@@ -136,8 +134,8 @@ services:
       ROOT_PASSWORD: minad1234
     post_start:
       - command: ["sh", "-c", "/share/with-secrets.sh /share/generate-ansible-user-ssh.sh"]
-#    depends_on:
-#      -  semaphore
+    depends_on:
+      -  semaphore
     ports:
       - "8084:80"
     networks:
@@ -165,8 +163,8 @@ services:
 
     post_start:
       - command: ["sh", "-c", "/share/with-secrets.sh /share/generate-ansible-user-ssh.sh"]
-#    depends_on:
-#      -  semaphore
+    depends_on:
+      -  semaphore
     ports:
       - "8085:80"
     networks:
