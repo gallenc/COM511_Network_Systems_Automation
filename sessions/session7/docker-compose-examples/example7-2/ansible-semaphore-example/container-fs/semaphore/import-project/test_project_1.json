@@ -10,8 +10,8 @@
   "integrations": [],
   "inventories": [
     {
-      "inventory": "sessions/session4/aws-ansible-examples/ansible-semaphore-localstack-example/ansible/project-ansible3/inventory.ini",
-      "name": "project-ansible3-inventory",
+      "inventory": "/sessions/session7/docker-compose-examples/example7-2/ansible-semaphore-example/ansible/project-ansibleA/inventory.ini",
+      "name": "project-ansibleA-inventory",
       "ssh_key": "None",
       "type": "file"
     }
@@ -32,8 +32,8 @@
   "repositories": [
     {
       "git_branch": "main",
-      "git_url": "https://github.com/gallenc/COM614-cloud-computing.git",
-      "name": "COM614-cloud-computing",
+      "git_url": "https://github.com/gallenc/COM511_Network_Systems_Automation.git",
+      "name": "COM511_Network_Systems_Automation",
       "ssh_key": "None"
     }
   ],
@@ -49,10 +49,10 @@
       "arguments": "[]",
       "autorun": false,
       "environment": "Empty",
-      "inventory": "project-ansible3-inventory",
+      "inventory": "project-ansibleA-inventory",
       "name": "install-apache",
-      "playbook": "sessions/session4/aws-ansible-examples/ansible-semaphore-localstack-example/ansible/project-ansible3/install_apache.yml",
-      "repository": "COM614-cloud-computing",
+      "playbook": "sessions/session7/docker-compose-examples/example7-2/ansible-semaphore-example/ansible/project-ansibleA/install_apache.yml",
+      "repository": "COM511_Network_Systems_Automation",
       "roles": [],
       "suppress_success_alerts": false,
       "survey_vars": [],
@@ -69,10 +69,10 @@
       "arguments": "[]",
       "autorun": false,
       "environment": "Empty",
-      "inventory": "project-ansible3-inventory",
+      "inventory": "project-ansibleA-inventory",
       "name": "load-ssh-password",
-      "playbook": "sessions/session4/aws-ansible-examples/ansible-semaphore-localstack-example/ansible/project-ansible3/load-ssh-withpass.yml",
-      "repository": "COM614-cloud-computing",
+      "playbook": "sessions/session7/docker-compose-examples/example7-2/ansible-semaphore-example/ansible/project-ansibleA/load-ssh-withpass.yml",
+      "repository": "COM511_Network_Systems_Automation",
       "roles": [],
       "suppress_success_alerts": false,
       "survey_vars": [],
@@ -89,10 +89,10 @@
       "arguments": "[]",
       "autorun": false,
       "environment": "Empty",
-      "inventory": "project-ansible3-inventory",
+      "inventory": "project-ansibleA-inventory",
       "name": "unistall-apache",
-      "playbook": "sessions/session4/aws-ansible-examples/ansible-semaphore-localstack-example/ansible/project-ansible3/uninstall_apache.yml",
-      "repository": "COM614-cloud-computing",
+      "playbook": "sessions/session7/docker-compose-examples/example7-2/ansible-semaphore-example/ansible/project-ansibleA/uninstall_apache.yml",
+      "repository": "COM511_Network_Systems_Automation",
       "roles": [],
       "suppress_success_alerts": false,
       "survey_vars": [],
