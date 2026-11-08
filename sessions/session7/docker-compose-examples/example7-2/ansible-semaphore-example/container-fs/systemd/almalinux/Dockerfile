@@ -1,8 +1,10 @@
 # modified for alma linux from https://www.cherryservers.com/blog/ssh-into-docker-container
 
-FROM almalinux:10.1
+FROM antmelekhin/docker-systemd:almalinux-10
 
-RUN dnf update -y && dnf install -y openssh-server openssh-clients whois sudo
+RUN dnf update -y && dnf install -y openssh-server openssh-clients whois sudo \
+    && dnf clean all \
+    && rm -rf /var/cache/dnf/*
 
 RUN mkdir /var/run/sshd
 
@@ -24,6 +26,6 @@ EXPOSE 22
 # CMD ["sh", "-c", "echo \"root:$ROOT_PASSWORD\" | chpasswd && /usr/sbin/sshd -D"]
 
 # root password is passed in as an environment variable, used to set root password. This is not secure but works
-CMD ["bash", "-c", "if [[ -v ROOT_PASSWORD ]]; then echo \"root:$ROOT_PASSWORD\" | chpasswd ;  fi && /usr/sbin/sshd -D"]
+CMD ["bash", "-c", "if [[ -v ROOT_PASSWORD ]]; then echo \"root:$ROOT_PASSWORD\" | chpasswd ;  fi "]
 
 

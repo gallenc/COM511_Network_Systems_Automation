@@ -1,7 +1,10 @@
 # see https://www.cherryservers.com/blog/ssh-into-docker-container
 
-FROM ubuntu:26.04
-RUN apt-get update && apt-get install -y openssh-server whois sudo python3 python3-pip python3-venv
+FROM antmelekhin/docker-systemd:ubuntu-24.04
+RUN apt-get update && apt-get install -y openssh-server whois sudo python3 python3-pip python3-venv \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    
 RUN mkdir -p /var/run/sshd
 
 
@@ -17,6 +20,6 @@ EXPOSE 22
 # CMD ["/usr/sbin/sshd", "-D"]
 
 # root password is passed in as an environment variable, used to set root password. This is not secure but works
-CMD ["bash", "-c", "if [[ -v ROOT_PASSWORD ]]; then echo \"root:$ROOT_PASSWORD\" | chpasswd ;  fi && /usr/sbin/sshd -D"]
+CMD ["bash", "-c", "if [[ -v ROOT_PASSWORD ]]; then echo \"root:$ROOT_PASSWORD\" | chpasswd ;  fi "]
 
 
