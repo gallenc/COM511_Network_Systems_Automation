@@ -22,7 +22,6 @@ secrets:
     file: ./.secrets/vault_password_file.txt
 
 services:
-  # uncomment this section and comment out the mysql section to use postgres instead of mysql
   postgres-semaphore:
     container_name: postgres-semaphore
     restart: unless-stopped
@@ -142,8 +141,8 @@ services:
       N020:
         ipv4_address: 172.20.0.26
   
-  # from https://hub.docker.com/layers/antmelekhin/docker-systemd/ubuntu-24.04/
-  ## ubuntu test container - with systemd
+#  # from https://hub.docker.com/layers/antmelekhin/docker-systemd/ubuntu-24.04/
+#  ## ubuntu test container - with systemd
   ubuntusd1:
     container_name: ubuntusd1
     image: ubuntu24sd-local
@@ -189,7 +188,7 @@ services:
     post_start:
       - command: ["sh", "-c", "/share/with-secrets.sh /share/generate-ansible-user-ssh.sh"]
     depends_on:
-      -  ubuntusd1
+      -  semaphore
     networks:
       N020:
         ipv4_address: 172.20.0.22
