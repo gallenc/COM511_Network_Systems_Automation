@@ -164,7 +164,7 @@ services:
     post_start:
       - command: ["sh", "-c", "/share/with-secrets.sh /share/generate-ansible-user-ssh.sh"]
     depends_on:
-      -  semaphore
+      -  almasd1
     ports:
       - "8085:80"
     networks:
@@ -173,46 +173,46 @@ services:
 
   # IMAGES WITH SSH BUT NO SYSTEMD
   ## test container - no systemd
-#  ubuntu1:
-#    container_name: ubuntu1
-#    image: ubuntu-local
-#    build: ./container-fs/nosystemd/ubuntu
-#    restart: on-failure
-#    secrets:
-#      - ANSIBLE_SSH_PASSPHRASE
-#      - ANSIBLE_ROOT_PASSWORD
-#    environment:
-#      ROOT_PASSWORD: minad1234
-#    volumes:
-#      - ./container-fs/share:/share
-#      - ssh-keys:/ssh-keys
-#    post_start:
-#      - command: ["sh", "-c", "/share/with-secrets.sh /share/generate-ansible-user-ssh.sh"]
-#    depends_on:
-#      -  semaphore
-#    networks:
-#      N020:
-#        ipv4_address: 172.20.0.22
-#        
-#  ## test container - no systemd
-#  alma1:
-#    container_name: alma1
-#    image: alma10-local
-#    build: ./container-fs/nosystemd/almalinux
-#    restart: on-failure
-#    secrets:
-#      - ANSIBLE_SSH_PASSPHRASE
-#      - ANSIBLE_ROOT_PASSWORD
-#    environment:
-#      ROOT_PASSWORD: minad1234
-#    volumes:
-#      - ./container-fs/share:/share
-#      - ssh-keys:/ssh-keys
-#    post_start:
-#      - command: ["sh", "-c", "/share/with-secrets.sh /share/generate-ansible-user-ssh.sh"]
-#    depends_on:
-#      -  ubuntu1
-#    networks:
-#      N020:
-#        ipv4_address: 172.20.0.23
-#      
+  ubuntu1:
+    container_name: ubuntu1
+    image: ubuntu-local
+    build: ./container-fs/nosystemd/ubuntu
+    restart: on-failure
+    secrets:
+      - ANSIBLE_SSH_PASSPHRASE
+      - ANSIBLE_ROOT_PASSWORD
+    environment:
+      ROOT_PASSWORD: minad1234
+    volumes:
+      - ./container-fs/share:/share
+      - ssh-keys:/ssh-keys
+    post_start:
+      - command: ["sh", "-c", "/share/with-secrets.sh /share/generate-ansible-user-ssh.sh"]
+    depends_on:
+      -  ubuntusd1
+    networks:
+      N020:
+        ipv4_address: 172.20.0.22
+        
+  ## test container - no systemd
+  alma1:
+    container_name: alma1
+    image: alma10-local
+    build: ./container-fs/nosystemd/almalinux
+    restart: on-failure
+    secrets:
+      - ANSIBLE_SSH_PASSPHRASE
+      - ANSIBLE_ROOT_PASSWORD
+    environment:
+      ROOT_PASSWORD: minad1234
+    volumes:
+      - ./container-fs/share:/share
+      - ssh-keys:/ssh-keys
+    post_start:
+      - command: ["sh", "-c", "/share/with-secrets.sh /share/generate-ansible-user-ssh.sh"]
+    depends_on:
+      -  ubuntu1
+    networks:
+      N020:
+        ipv4_address: 172.20.0.23
+      
