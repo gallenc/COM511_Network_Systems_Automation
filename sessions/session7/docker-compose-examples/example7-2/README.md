@@ -15,3 +15,7 @@
 
 ![alt text](./images/semaphore5.png "Figure semaphore5.png")
 
+
+![alt text](./images/semaphore6.png "Figure semaphore6.png")
+
+
