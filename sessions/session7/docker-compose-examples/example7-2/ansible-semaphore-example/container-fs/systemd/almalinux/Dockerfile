@@ -2,7 +2,7 @@
 
 FROM antmelekhin/docker-systemd:almalinux-10
 
-RUN dnf update -y && dnf install -y openssh-server openssh-clients whois sudo \
+RUN dnf update -y && dnf install -y openssh-server openssh-clients whois sudo mkpasswd \
     && dnf clean all \
     && rm -rf /var/cache/dnf/*
 

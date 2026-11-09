@@ -131,6 +131,8 @@ services:
       - ANSIBLE_ROOT_PASSWORD
     environment:
       ROOT_PASSWORD: minad1234
+      # note injecting secrets does not work in systemd containers - so we have to use environment variable for ansible password instead
+      ANSIBLE_ROOT_PASSWORD: minad1234
     post_start:
       - command: ["sh", "-c", "/share/with-secrets.sh /share/generate-ansible-user-ssh.sh"]
     depends_on:
@@ -153,6 +155,8 @@ services:
       - ANSIBLE_ROOT_PASSWORD
     environment:
       ROOT_PASSWORD: minad1234
+       # note injecting secrets does not work in systemd containers - so we have to use environment variable for ansible password instead
+      ANSIBLE_ROOT_PASSWORD: minad1234
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
