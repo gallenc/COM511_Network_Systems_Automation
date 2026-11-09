@@ -1,0 +1,10 @@
+---
+- name: uninstall apache with password
+  hosts: web
+  gather_facts: yes
+  become: yes
+      
+  roles:
+    - uninstall-apache2
+
+ 

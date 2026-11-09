@@ -1,0 +1,10 @@
+---
+- name: install apache with password
+  hosts: web
+  gather_facts: yes
+  become: yes
+
+  roles:
+    - install-apache2
+
+ 
