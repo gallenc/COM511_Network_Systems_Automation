@@ -64,19 +64,19 @@ We can also use the command line to load a project - which is how we load the de
 In our example, we have defined two ansible projects, both of which are referenced in the semaphore UI.
 
 ![alt text](./images/semaphore2.png "Figure semaphore2.png")
+
+[project-ansibleB](./ansible-semaphore-example/ansible/project-ansibleB) is a project which uses ssh passwords defined in the inventory to access each of the target containers. 
+Look at the [project-ansibleB](./ansible-semaphore-example/ansible/project-ansibleB) first as this is much simpler to understand. 
+
+[install_apache_with_pass.yml](./ansible-semaphore-example/ansible/project-ansibleB/install_apache_with_pass.yml) installs apache in both of the containers using the ssh password in the inventory.
+
+[uninstall_apache_with_pass.yml](./ansible-semaphore-example/ansible/project-ansibleB/uninstall_apache_with_pass.yml) uninstalls apache in both of the containers using the ssh password in the inventory.
  
-project-ansibleB is a project which uses ssh passwords defined in the inventory to access each of the target containers. 
-Look at the  project-ansibleB first as this is much simpler to understand. 
+[project-ansibleA](./ansible-semaphore-example/ansible/project-ansibleA)  is a project which uses ssh keys to access each of the target containers.
 
-install_apache_with_pass.yml installs apache in both of the containers using the ssh password in the inventory.
+[install_apache.yml](./ansible-semaphore-example/ansible/project-ansibleA/install_apache.ym) installs apache in both of the containers using the ssh key with a passphrase.
 
-uninstall_apache_with_pass.yml uninstalls apache in both of the containers using the ssh password in the inventory.
- 
-project-ansibleA is a project which uses ssh keys to access each of the target containers.
-
-install_apache.yml installs apache in both of the containers using the ssh key with a passphrase.
-
-uninstall_apache.yml uninstalls apache in both of the containers using the ssh key with a passphrase.
+[uninstall_apache.yml](./ansible-semaphore-example/ansible/project-ansibleA/uninstall_apache.yml) uninstalls apache in both of the containers using the ssh key with a passphrase.
 
  
 
