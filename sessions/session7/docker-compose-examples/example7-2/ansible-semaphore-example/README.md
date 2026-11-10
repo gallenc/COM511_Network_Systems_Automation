@@ -1,10 +1,7 @@
 # ansible SemaphoreUI example
 
-## SemaphoreUI
+We will be using a [Dockerised version of SemaphoreUI]( https://docs.semaphoreui.com/administration-guide/installation/docker/).
 
-https://semaphoreui.com/
-
-see https://docs.semaphoreui.com/administration-guide/installation/docker/
 
 ## Running example
 
