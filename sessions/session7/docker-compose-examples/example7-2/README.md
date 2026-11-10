@@ -33,7 +33,7 @@ This diagram shows the result of one of our example Ansible scripts being run ma
 
 SemaphoreUI starts by checking out a clone of a remote repository (or pulling an update if it already exists). 
 It then runs a playbook within the repository and records a log of the results.
-Thus we have a record of which logged in user has run playbooks and a record of the results of every run.
+Thus we have a record of which user logged in to Semaphore has run playbooks and a record of the results of every run.
 
 This images shows a playbook definition.
  
