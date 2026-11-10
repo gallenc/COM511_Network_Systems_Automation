@@ -5,11 +5,11 @@
 The [Red Hat Ansible Automation Platform](https://docs.ansible.com/projects/ansible/latest/reference_appendices/tower.html) (formerly called Ansible Tower) is the commercial enterprise version of Ansible, developed and supported by Red Hat. It provides a web-based user interface, dashboard, and REST API to help teams scale and control their IT automation. 
 It provides the following key features:
 
-• Web UI & Dashboard: Replaces the command-line interface with a visual console for real-time node monitoring and job tracking.
-• Role-Based Access Control (RBAC): Manages user and team permissions, with integration for LDAP and Active Directory.
-• Job Scheduling: Automates and repeats playbook runs or inventory syncs.
-• Workflows: Chains multiple playbooks together into complex, multi-step automated processes.
-• Centralized Credentials: Securely stores and manages access keys, SSH credentials, and cloud tokens without exposing them to users.
+* Web UI & Dashboard: Replaces the command-line interface with a visual console for real-time node monitoring and job tracking.
+* Role-Based Access Control (RBAC): Manages user and team permissions, with integration for LDAP and Active Directory.
+* Job Scheduling: Automates and repeats playbook runs or inventory syncs.
+* Workflows: Chains multiple playbooks together into complex, multi-step automated processes.
+* Centralised Credentials: Securely stores and manages access keys, SSH credentials, and cloud tokens without exposing them to users.
 
 ![alt text](./images/Anbile-Tower-strategy.png "Figure Anbile-Tower-strategy.png")
 
