@@ -1,6 +1,6 @@
-# ansible semaphore example
+# ansible SemaphoreUI example
 
-## Semaphore
+## SemaphoreUI
 
 https://semaphoreui.com/
 
