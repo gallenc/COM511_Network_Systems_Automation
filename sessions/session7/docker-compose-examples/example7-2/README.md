@@ -15,7 +15,7 @@ It provides the following key features:
 
 The Ansible Automation Platform is widely deployed but is complex to set up and use. 
 
-We will be looking at a simpler open source platform, [SemaphoreUI](https://semaphoreui.com/) which provides the same key features but is simpler to deploy.
+We will be looking at a simpler open source platform, [SemaphoreUI](https://semaphoreui.com/) which provides the same key features but is easier to deploy.
 
 ## Semaphore UI
 
@@ -24,8 +24,8 @@ We will be looking at a simpler open source platform, [SemaphoreUI](https://sema
 You can find out more about usage options from the [Semaphore UI Documentation](https://docs.semaphoreui.com/administration-guide/)
 
 Semaphore provides the user with a dashboard with predefined buttons to run scripts on remote machines. 
-These scripts can be written in several widely used scripting technology including Ansible, bash or Kubernetes.
-Automations which can be run manually or on a schedule or even through a ReST API.
+These scripts can be written in several widely used scripting technologies including Ansible, bash or Kubernetes.
+Automations can be run manually or on a schedule or even through a ReST API.
 
 This diagram shows the result of one of our example Ansible scripts being run manually.
 
@@ -35,17 +35,17 @@ SemaphoreUI starts by checking out a clone of a remote repository (or pulling an
 It then runs a playbook within the repository and records a log of the results.
 Thus we have a record of which user logged in to Semaphore has run playbooks and a record of the results of every run.
 
-This images shows a playbook definition.
+This image shows a playbook definition.
  
 ![alt text](./images/semaphore3.png "Figure semaphore3.png")
 
-The location of the playbook to be run is given relative to the root of the chosen repository. 
+The location of the playbook to be run is entered relative to the root of the chosen repository. 
 The inventory to be used with the playbook is chosen from a list of pre-defined inventories.
-Additional variables can be defined, and also questions to ask users to get variables such as passwords.
+Additional variables can be defined, and also questions defined to ask users for variables such as passwords.
 
 We can pre-define multiple repositories and multiple inventories.
 
-Each predefined repository is defined with a link to a git hosting site (i.e. github, gitlab or sourceforge) potentially with access keys if the repo is private.
+Each predefined repository is defined with a link to a git hosting site (i.e. github, gitlab or sourceforge), potentially with access keys if the repo is private.
 
 ![alt text](./images/semaphore4.png "Figure semaphore4.png")
 
@@ -53,11 +53,12 @@ Similarly, each inventory is also located relative to the root of a chosen repos
 
 ![alt text](./images/semaphore5.png "Figure semaphore5.png")
 
-The semaphoreUI can support multiple projects. 
+The SemaphoreUI can support multiple projects. 
 Each project can be saved or loaded from a json file, as shown here. 
-We can also use the command line to load a project - which is how we load the default project from the docker compose project.
 
 ![alt text](./images/semaphore1.png "Figure semaphore1.png")
+
+We can also use the command line to load a project into the UI - which is how we load the default project [test_project_1.json](./ansbible-semaphore-example/container-fs/semaphore/import-project/test_project_1.json) from within the docker compose project.
  
 ## Ansible projects in the example
 
@@ -73,7 +74,9 @@ Look at the [project-ansibleB](./ansible-semaphore-example/ansible/project-ansib
 * [install_apache_with_pass.yml](./ansible-semaphore-example/ansible/project-ansibleB/install_apache_with_pass.yml) installs apache in both of the containers using the ssh password in the inventory.
 * [uninstall_apache_with_pass.yml](./ansible-semaphore-example/ansible/project-ansibleB/uninstall_apache_with_pass.yml) uninstalls apache in both of the containers using the ssh password in the inventory.
 
-[project-ansibleA](./ansible-semaphore-example/ansible/project-ansibleA)  is a project which uses ssh keys to access each of the target containers.
+[project-ansibleA](./ansible-semaphore-example/ansible/project-ansibleA) is a project which uses ssh keys to access each of the target containers.
+
+The basic operation of this project is the same as above except that a `pre-task` is used to unlock the ansible private key using a `passphrase` injected from a docker-compose secret.
 
 * [load-ssh-withpass.yml](./ansible-semaphore-example/ansible/project-ansibleA/load-ssh-withpass.yml) just illustrates how a key is loaded in a `pre-task` and unloaded in a `post-task`.
 * [install_apache.yml](./ansible-semaphore-example/ansible/project-ansibleA/install_apache.ym) installs apache in both of the containers using the ssh key with a passphrase.

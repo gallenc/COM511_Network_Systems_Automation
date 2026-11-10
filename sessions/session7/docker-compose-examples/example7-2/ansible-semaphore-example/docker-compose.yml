@@ -155,7 +155,7 @@ services:
       - ANSIBLE_ROOT_PASSWORD
     environment:
       ROOT_PASSWORD: minad1234
-       # note injecting secrets does not work in systemd containers - so we have to use environment variable for ansible password instead
+       # note injecting secrets does not work in systemd containers - so we have to use environment variable for ansible password injection instead
       ANSIBLE_ROOT_PASSWORD: minad1234
     privileged: true
     volumes:
