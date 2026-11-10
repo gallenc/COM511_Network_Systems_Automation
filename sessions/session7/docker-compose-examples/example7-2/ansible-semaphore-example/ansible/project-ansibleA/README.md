@@ -1,4 +1,9 @@
-# README project-ansible3
+# Project ansible A 
+
+A more complex project using ssh keys and ssh-add utility
+
+
+# Random notes - needs tidied
 
 This project looks at process of importing ansible ssh keys into semaphore before running a playbook.
 
