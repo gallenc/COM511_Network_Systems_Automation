@@ -17,16 +17,17 @@ The Ansible Automation Platform is widely deployed but is complex to set up and 
 
 We will be looking at a simpler open source platform, [SemaphoreUI](https://semaphoreui.com/) which provides the same key features but is simpler to deploy.
 
-## SemaphoreUI
+## Semaphore UI
 
-[SemaphoreUI](https://semaphoreui.com/) is an open-source, self-hosted web interface and API control center designed to manage and run DevOps automation tools.
+[SemaphoreUI](https://semaphoreui.com/) is an open-source, self-hosted web interface and API control center designed to manage and run DevOps automation tools. 
 
-[Semaphore UI Documentation](https://docs.semaphoreui.com/administration-guide/)
+You can find out more about usage options from the [Semaphore UI Documentation](https://docs.semaphoreui.com/administration-guide/)
 
-Semaphore provides the user with a dashboard with buttons to run scripts on remote machines. 
-These scripts can be ansible, bash or kubernetes automations which can be run manually or on a schedule or even through a ReST API.
+Semaphore provides the user with a dashboard with predefined buttons to run scripts on remote machines. 
+These scripts can be written in several widely used scripting technology including Ansible, bash or Kubernetes.
+Automations which can be run manually or on a schedule or even through a ReST API.
 
-This diagram shows the result of one of our example ansible scripts being run manually.
+This diagram shows the result of one of our example Ansible scripts being run manually.
 
 ![alt text](./images/semaphore6.png "Figure semaphore6.png")
 
