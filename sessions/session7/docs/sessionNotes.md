@@ -29,6 +29,7 @@ Make sure you can explain
 * How OpenNMS can monitor web sites 
 * How OpenNMS can monitor servers and routers using snmp
 * Discovering the machines in the lab
+* In the networking lab, can you set up a router to repond to SNMP and let OpenNMS scan it?
 ---
 
 ## Ansible SemaphoreUI
@@ -45,5 +46,5 @@ Go through the exercises in  [docker-compose-examples/example7-2](../docker-comp
 Make sure you can explain 
 * How the Docker Compose script runs Ansible SemaphoreUI
 * How Ansible Scripts can be run from github using SemaphoreUI
-
+* Can you add an additional ansible project to install a web page on the Apache servers or to do another installation entirely.
 ---
