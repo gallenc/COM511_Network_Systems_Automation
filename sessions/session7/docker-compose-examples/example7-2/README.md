@@ -82,7 +82,11 @@ The basic operation of this project is the same as above except that a `pre-task
 * [install_apache.yml](./ansible-semaphore-example/ansible/project-ansibleA/install_apache.ym) installs apache in both of the containers using the ssh key with a passphrase.
 * [uninstall_apache.yml](./ansible-semaphore-example/ansible/project-ansibleA/uninstall_apache.yml) uninstalls apache in both of the containers using the ssh key with a passphrase.
 
- 
+
+ Ports 8085 and 8084 are mapped to port 80 in docker compose so once the ansible install-apache scripts have completed, you will be able to see the Apache splash pages on
+ * [http://localhost:8085/](http://localhost:8085/) (Ubuntu)
+ * [http://localhost:8084/](http://localhost:8084/) (Alma Linux)
+
 
 
 
