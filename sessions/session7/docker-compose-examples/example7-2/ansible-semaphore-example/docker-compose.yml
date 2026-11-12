@@ -110,12 +110,14 @@ services:
   #   docker run -d --name systemd-${DISTR}-${VERSION} --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cgroupns=host docker-systemd:${DISTR}-${VERSION}
 
   ## alma10 test container - with systemd
+
   almasd1:
     container_name: almasd1
     # image: antmelekhin/docker-systemd:almalinux-10
     image: alma10sd-local
     build: ./container-fs/systemd/almalinux
     privileged: true
+    cgroup: host
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
         #cgroupns: host  ## not allowed in docker compose? not needed :)
@@ -158,6 +160,13 @@ services:
        # note injecting secrets does not work in systemd containers - so we have to use environment variable for ansible password injection instead
       ANSIBLE_ROOT_PASSWORD: minad1234
     privileged: true
+    
+    # Sharing the host cgroup namespace (cgroup: host or legacy cgroupns_mode: host) allows a container to read and interact with the host’s entire cgroup hierarchy,
+    # exposing resource accounting data for host processes and potentially enabling manipulation of resource limits outside the container’s scope. 
+    # This weakens isolation and can be exploited to interfere with host-level resource allocation. 
+    # we need this for systemd containers to work properly, but it does reduce isolation and security. Use with caution.
+    cgroup: host
+    
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
           #cgroupns: host  ## not allowed in docker compose? not needed :)
