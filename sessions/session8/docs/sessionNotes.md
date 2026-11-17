@@ -104,6 +104,7 @@ deployment.apps/nginx   1/1     1            1           4m44s
 
 NAME                              DESIRED   CURRENT   READY   AGE
 replicaset.apps/nginx-7f8fbb96d   1         1         1       4m44s
+
 ```
 
 4. we can describe a particular pod using its name. This gives us all of the details of the pod and it's lifecycle events
@@ -196,13 +197,7 @@ etc
 ```
 kubectl get pods
 NAME                    READY   STATUS    RESTARTS   AGE
-nginx-7f8fbb96d-7hj92   1/1     Running   0          15s
-
-```
-kubectl get pods
-NAME                    READY   STATUS    RESTARTS   AGE
 nginx-7f8fbb96d-dmgfw   1/1     Running   0          18m
-
 
 kubectl delete pod nginx-7f8fbb96d-dmgfw
 pod "nginx-7f8fbb96d-dmgfw" deleted from default namespace
@@ -222,7 +217,7 @@ deployment.apps "nginx" deleted from default namespace
 kubectl get pods
 No resources found in default namespace.
 
- kubectl delete service nginx
+kubectl delete service nginx
 service "nginx" deleted from default namespace
 
 ```
