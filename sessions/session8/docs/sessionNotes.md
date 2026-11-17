@@ -67,13 +67,13 @@ b60559b3883d   docker/desktop-cloud-provider-kind:v0.8.0          "/bin/cloud-pr
 
 # Very simple Kubernetes example
 
-Start the Kubernetes cluster in docker desktop as discussed above.  The [thetips4you Intro to kubernetes ](https://www.youtube.com/watch?v=IluVqhoCChw) ) video tutorial will guide you through these steps but the commands below can be cut and pasted more easily.
+Start the Kubernetes cluster in docker desktop as discussed above.  The [thetips4you Intro to kubernetes ](https://www.youtube.com/watch?v=IluVqhoCChw) video tutorial will guide you through these steps but the commands below can be cut and pasted more easily.
 
 The following commands can be run in a power shell.
 
 We interact with kubernetes using the `kubectl` app which can be run like docker from the command line
 
-1. run a simple deployment. A deployment defines one or mored pods which contain containers
+1. run a simple deployment. A deployment defines one or more pods which contain containers
 
 ```
 kubectl create deployment nginx --image=nginx
@@ -191,7 +191,10 @@ etc
  kubectl expose deployment nginx --port=80 --type=LoadBalancer
 ```
 
-7. If you delete a pod, a new one will be created by the replica set in the deployment kubectl get pods
+7. If you delete a pod, a new one will be created by the replica set in the deployment
+
+```
+kubectl get pods
 NAME                    READY   STATUS    RESTARTS   AGE
 nginx-7f8fbb96d-7hj92   1/1     Running   0          15s
 
@@ -219,6 +222,9 @@ deployment.apps "nginx" deleted from default namespace
 kubectl get pods
 No resources found in default namespace.
 
+ kubectl delete service nginx
+service "nginx" deleted from default namespace
+
 ```
 
 This completes some simple command line based examples. 
@@ -226,10 +232,9 @@ This completes some simple command line based examples.
 See [kubernetes-example1](../kubernetes-example1])  for a more complete example using standard configuration scripts
 
 
-
 ## Learning more
 
-There ar plenty of tutorials on line but you can try the following
+There are plenty of tutorials on line but you can try the following
 
 https://github.com/tomjosetj31/learn-kubernetes
 
