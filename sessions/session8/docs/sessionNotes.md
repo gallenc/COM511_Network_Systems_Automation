@@ -67,6 +67,17 @@ b60559b3883d   docker/desktop-cloud-provider-kind:v0.8.0          "/bin/cloud-pr
 
 # Very simple Kubernetes example
 
+
+---
+**Exercise 8.1**
+
+Go through the exercises below.
+Make sure you can explain 
+* difference between kubernetes and docker compose
+* basic kubectl commands
+---
+
+
 Start the Kubernetes cluster in docker desktop as discussed above.  The [thetips4you Intro to kubernetes ](https://www.youtube.com/watch?v=IluVqhoCChw) video tutorial will guide you through these steps but the commands below can be cut and pasted more easily.
 
 The following commands can be run in a power shell.
@@ -224,12 +235,19 @@ service "nginx" deleted from default namespace
 
 This completes some simple command line based examples. 
 
-See [kubernetes-example1](../kubernetes-example1)  for a more complete example using standard configuration scripts
+---
+**Exercise 8.2**
 
+Go through the exercises [kubernetes-example1](../kubernetes-example1)  for a more complete example using standard configuration scripts
+Make sure you can explain 
+* deploying an application
+* replication sets
+* stretch - could you take a simple docker compose example and turn it into a kubernetes example.
+---
 
 ## Learning more
 
-There are plenty of tutorials on line but you can try the following
+There are plenty of tutorials on line but you can try the following on github
 
-https://github.com/tomjosetj31/learn-kubernetes
+[learn-kubernetes](https://github.com/tomjosetj31/learn-kubernetes)
 
