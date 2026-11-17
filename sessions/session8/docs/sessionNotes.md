@@ -224,7 +224,7 @@ service "nginx" deleted from default namespace
 
 This completes some simple command line based examples. 
 
-See [kubernetes-example1](../kubernetes-example1])  for a more complete example using standard configuration scripts
+See [kubernetes-example1](../kubernetes-example1)  for a more complete example using standard configuration scripts
 
 
 ## Learning more
