@@ -36,7 +36,12 @@ We are using it to create a test environment to play with Opnsense networking.
 OpnSense is build on BSD Unix which has a very different kernel to Linux. 
 We need to use a BSD unix base image to install OpnSense in vagrant and the vagrant file downloads and installs opnsense on a base BSD image. 
 
-Use `vagrant up` to build and start the image. You should see a ui appearing at 
+Use `vagrant up` to build and start the image. You should see a ui appearing at https://192.168.56.56/
+
+user : root password : opnsense
+
+You are not expected to become an expert in Opnsense but look around the project to gain an awareness of its potential value in your use case.
+
 Make sure you can explain 
 * how to set up a VPN to a 'road warrior'
 * how to set up a peer to peer vpn
