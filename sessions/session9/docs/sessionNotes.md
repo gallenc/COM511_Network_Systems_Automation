@@ -13,10 +13,10 @@ VPNs can also be used to allow remote users to log into the network and access r
 SSH can be used to create a simple tunnel VPN but this fairly limited in its scope.
 
 More frequently, physical or software appliances are used to provide a comprehensive edge routing facilities including VPN and firewall technology.
-One such example is [OpnSense](https://docs.opnsense.org/) which includes most of the features available in expensive commercial firewalls. It brings the rich feature set of commercial offerings with the benefits of open and verifiable sources.
+One such example is [OpnSense](https://docs.opnsense.org/) ([https://github.com/opnsense](https://github.com/opnsense) which includes most of the features available in expensive commercial firewalls. It brings the rich feature set of commercial offerings with the benefits of open and verifiable sources. 
 
-OpnSense was forked from [Pfsense](https://www.netgate.com/pfsense-plus-applications) when Netgate decided to restrict the original open source licence. 
-Both products are essentially similar but Netgate also provides pre-built physical appliances.
+OpnSense was forked from [Pfsense.org](https://pfsense.org/) ([https://github.com/pfsense/pfsense](https://github.com/pfsense/pfsense)) when [Netgate](https://www.netgate.com/) decided to restrict the original open source licence. 
+Both products are essentially similar and Netgate also provides pre-built physical appliances.
 
 Opnsense provides a packaged version of many of the technologies we have previously discussed including DNS, DHCP, VPNs using IPsec,Openvpn and Wireguard,  DNS using using Bind and dnsmasq.
 It also provides a user authentication mechanism, a firewall and a captive portal
