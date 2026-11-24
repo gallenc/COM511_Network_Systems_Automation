@@ -1,11 +1,12 @@
 # Assessment Advice
 
-You must try to hit all the categories in the marking criteria and all the customer requirements mentioned in the brief.
+You must try to hit all the categories in the marking criteria and all the customer requirements mentioned in the [Assessment Brief](./AssessmentBrief.md).
 I want to give you marks, but I can't if you don't try to meet each criteria
 
 ### 1. Structure, cohesion & presentation of report    20% 
 
-Remember the audience. 
+Remember who the audience is. 
+
 The customer is technically literate but he is more interested in the business value of the solution than the technical details. 
 Your main text needs to lead him towards the conclusion that you understand his problem, and could create a credible solution. 
 Anything that is too complex or obscure the message should go in appendices, tables or footnotes.
