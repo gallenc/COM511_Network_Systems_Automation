@@ -107,8 +107,8 @@ Make sure your name and student id are on the document front page
 
 Usually you include a document version control section after the front page 
 
-Document Info
 
+|                     | Document Information  |
 |:--------------------|:-----------------------------------------|
 | Document file name  |COM511-AE1-JoeBlogs-1234567-v1-24-11-2026 |
 | Version             |V 1.0 |
@@ -118,8 +118,8 @@ Document Info
 | github repo         |https://github.com/gallenc/COM511_Network_Systems_Automation |
 | github user id      |gallenc  |
 
-Version history
 
+|      | Version History  |
 |:-----|:----------------|
 |V 0.1 | Initial draft   | 
 |V 1.0 | Submitted version | 
