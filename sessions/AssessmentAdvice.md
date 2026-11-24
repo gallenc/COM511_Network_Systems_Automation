@@ -68,11 +68,14 @@ The class exercises cover examples of most of the technology you need to deliver
 Your main text should describe how all of these technologies can work together to deliver a solution.
 
 If you have written up each of the class exercises, you will have plenty of material to prove you understand the technology. 
-Use code and log snippets, screenshots and your personal notes to describe each technology you have experimented with and the things your learnt.
+Use code and log snippets, screenshots and your personal notes to describe each technology you have experimented with and the things you learnt.
+
 Put your notes in the appendix and / or reference them in your github repo.
 
 I want you to prove here that you understand the technology and have experimented with it in order to prove that it can be used by the customer.
-The appendices are YOUR notes. They should record your work in such a way that you could come back to it and remember what you did. It evidences your work and understanding but it can be written in bullet points and rough notes. 
+
+The appendices are YOUR notes. They should record your work in such a way that you could come back to it and remember what you did. 
+It evidences your work and understanding but it can be written in bullet points and rough notes. 
 
 ### 5. Conclusion and recommendations      20%
 
