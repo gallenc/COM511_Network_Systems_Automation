@@ -32,7 +32,7 @@ Formatting:
 * Use 1.5 line spacing with justified text in the paragraphs.
 * Use page breaks before each major section. (i.e. dont use line feeds to align headings to the top of pages).
 * Use diagrams to explain your proposal.
-* Number your sections and your requirements using legal numbering ( Section 1, 1.1, 1.2 etc.) and refer to the numbersed requirements in your solution
+* Number your sections and your requirements using legal numbering ( Section 1, 1.1, 1.2 etc.) and refer to the numbered requirements in your solution
 
 ### 2. Requirements analysis (What does the customer need)   20%
 
