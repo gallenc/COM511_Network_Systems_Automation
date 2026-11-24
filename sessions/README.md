@@ -1,6 +1,8 @@
 
 # Network Systems Automation (COM511) 2026
 
+See the [Assessment Brief](./AssessmentBrief.md) and the [Assessment Advice](./AssessmentAdvice.md)
+
 ## Module Sessions
 
 (Contents may be subject to changes)
