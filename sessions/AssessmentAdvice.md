@@ -79,7 +79,7 @@ It evidences your work and understanding but it can be written in bullet points 
 
 ### 5. Conclusion and recommendations      20%
 
-Having describe the customer's problem and your solution, your conclusion should summarise what you have done and make some recommendations.
+Having describe the customer's problem and your solution, your conclusion should summarise your proposal, what experiments you have done to prove it can work and finally make some recommendations.
 
 You might want to consider:
 
