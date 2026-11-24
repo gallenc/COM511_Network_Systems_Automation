@@ -30,13 +30,13 @@ Any words in the executive overview, in footnotes or tables or the appendix do n
 Formatting:
 * Have a header (title) page, executive overview, glossary, table of contents, page numbers in footers and a version control page (see submission below)
 * Use 1.5 line spacing with justified text in the paragraphs.
-* Use page breaks before each major section. (i.e. dont use line feeds to align headings to the top of pages).
+* Use page breaks before each major section. (i.e. don't use line feeds to align headings to the top of pages).
 * Use diagrams to explain your proposal.
 * Number your sections and your requirements using legal numbering ( Section 1, 1.1, 1.2 etc.) and refer to the numbered requirements in your solution
 
 ### 2. Requirements analysis (What does the customer need)   20%
 
-You have been given a list of high level requirements in the brief. 
+You have been given a list of high level requirements in the [Assessment Brief](./AssessmentBrief.md). 
 These are just the first level of the customer's understanding. 
 
 You need to ensure you demonstrate you have understood each of the requirements and have addressed it in your solution. 
