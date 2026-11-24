@@ -170,6 +170,19 @@
             <p><a href="../sessions/session8">Session&nbsp;8</a></p>
          </td>
          <td>
+            <p>Kubernetes</p>
+         </td>
+         <td>
+            <li>Docker desktop Kubernetes examples</li>
+         </td>
+         <td>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <p><a href="../sessions/session9">Session&nbsp;9</a></p>
+         </td>
+         <td>
             <p>Networking / routing / firewalls and VPNs</p>
          </td>
          <td>
@@ -182,19 +195,6 @@
             <li>using masquerade / NAT</li>
             <li>VPN using opnsense</li>
             <li>VPN using SSH</li>
-         </td>
-         <td>
-         </td>
-      </tr>
-      <tr>
-         <td>
-            <p><a href="../sessions/session9">Session&nbsp;9</a></p>
-         </td>
-         <td>
-            <p>Kubernetes</p>
-         </td>
-         <td>
-            <li>Docker desktop Kubernetes examples</li>
          </td>
          <td>
          </td>
